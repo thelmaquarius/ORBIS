@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orbis</title>
+    <style>
+            /* La vidéo occupe tout l’écran */
+    video.background {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+    </style>
 </head>
 <body>
+     <video class="background" autoplay muted loop playsinline>
+    <source src="terre_qui_tourne_style.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo HTML5.
+  </video>
     <header>
     <UL>
         <li>Le Projet</li>
@@ -16,7 +33,9 @@
     </header>
 
     <h1 class="titre">Orbis</h1>
-
+    <section>
+        
+    </section>
     <section>
         <canvas class="canvaTerre">
 
