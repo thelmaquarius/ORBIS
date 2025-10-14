@@ -9,7 +9,7 @@
         @font-face {
           font-family: "Français";
           src:
-            url("../ORBIS/fonts/Francais.otf") format("opentype")
+            url("Francais.otf") format("opentype")
         }
     
 
@@ -126,7 +126,7 @@
     <!-- Intro vidéo -->
     <section id="intro">
       <video class="background" autoplay muted playsinline preload="auto">
-        <source src="../ORBIS/media/planete_film.mp4" type="video/mp4" />
+        <source src="Vidéo planète.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
       <h1 class="titre" id="titre">Orbis</h1>
@@ -204,7 +204,7 @@ let targetText = document.querySelector('.titre').innerHTML;
 // --- Fonction principale ---
 async function decodeText(targetText, totalDuration, elementId) {
   // --- Chargement des alphabets ---
-  const res = await fetch('../ORBIS/data/alphabets_rotated.json');
+  const res = await fetch('alphabets_rotated.json');
   const alphabets = await res.json();
 
   if (!alphabets.length) {
