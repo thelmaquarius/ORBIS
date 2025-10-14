@@ -129,7 +129,7 @@
         <source src="Vidéo planète.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
-      <h1 class="titre">Orbis</h1>
+      <h1 class="titre" id="titre">Orbis</h1>
     </section>
 
     <!-- Contenu principal -->
@@ -198,441 +198,15 @@
       }, 14720);
 
       // --- Exemple de chargement des alphabets depuis ton fichier JSON ---
-let alphabets = [
-  {
-    "char_1": "あ",
-    "char_2": "い",
-    "char_3": "う",
-    "char_4": "え",
-    "char_5": "お",
-    "char_6": "か",
-    "char_7": "き",
-    "char_8": "く",
-    "char_9": "け",
-    "char_10": "こ",
-    "char_11": "さ",
-    "char_12": "し",
-    "char_13": "す",
-    "char_14": "せ",
-    "char_15": "そ",
-    "char_16": "た",
-    "char_17": "ち",
-    "char_18": "つ",
-    "char_19": "て",
-    "char_20": "と",
-    "char_21": "な",
-    "char_22": "に",
-    "char_23": "ぬ",
-    "char_24": "ね",
-    "char_25": "の",
-    "char_26": "は",
-    "char_27": "ひ",
-    "char_28": "ふ",
-    "char_29": "へ",
-    "char_30": "ほ",
-    "char_31": "ま",
-    "char_32": "み",
-    "char_33": "む",
-    "char_34": "め",
-    "char_35": "も",
-    "char_36": "や",
-    "char_37": "ゆ",
-    "char_38": "よ",
-    "char_39": "ら",
-    "char_40": "り",
-    "char_41": "る",
-    "char_42": "れ",
-    "char_43": "ろ",
-    "char_44": "わ",
-    "char_45": "を",
-    "char_46": "ん",
-    "char_47": "ア",
-    "char_48": "イ",
-    "char_49": "ウ",
-    "char_50": "エ",
-    "char_51": "オ",
-    "char_52": "カ",
-    "char_53": "キ",
-    "char_54": "ク",
-    "char_55": "ケ",
-    "char_56": "コ",
-    "char_57": "サ",
-    "char_58": "シ",
-    "char_59": "ス",
-    "char_60": "セ",
-    "char_61": "ソ",
-    "char_62": "タ",
-    "char_63": "チ",
-    "char_64": "ツ",
-    "char_65": "テ",
-    "char_66": "ト",
-    "char_67": "ナ",
-    "char_68": "ニ",
-    "char_69": "ヌ",
-    "char_70": "ネ",
-    "char_71": "ノ",
-    "char_72": "ハ",
-    "char_73": "ヒ",
-    "char_74": "フ",
-    "char_75": "ヘ",
-    "char_76": "ホ",
-    "char_77": "マ",
-    "char_78": "ミ",
-    "char_79": "ム",
-    "char_80": "メ",
-    "char_81": "モ",
-    "char_82": "ヤ",
-    "char_83": "ユ",
-    "char_84": "ヨ",
-    "char_85": "ラ",
-    "char_86": "リ",
-    "char_87": "ル",
-    "char_88": "レ",
-    "char_89": "ロ",
-    "char_90": "ワ",
-    "char_91": "ヲ",
-    "char_92": "ン"
-  },
-  {
-    "char_1": "א",
-    "char_2": "ב",
-    "char_3": "ג",
-    "char_4": "ד",
-    "char_5": "ה",
-    "char_6": "ו",
-    "char_7": "ז",
-    "char_8": "ח",
-    "char_9": "ט",
-    "char_10": "י",
-    "char_11": "כ",
-    "char_12": "ל",
-    "char_13": "מ",
-    "char_14": "נ",
-    "char_15": "ס",
-    "char_16": "ע",
-    "char_17": "פ",
-    "char_18": "צ",
-    "char_19": "ק",
-    "char_20": "ר",
-    "char_21": "ש",
-    "char_22": "ת",
-    "char_23": "ך",
-    "char_24": "ם",
-    "char_25": "ן",
-    "char_26": "ף",
-    "char_27": "ץ",
-    "char_28": "א",
-    "char_29": "ב",
-    "char_30": "ג",
-    "char_31": "ד",
-    "char_32": "ה",
-    "char_33": "ו",
-    "char_34": "ז",
-    "char_35": "ח",
-    "char_36": "ט",
-    "char_37": "י",
-    "char_38": "כ",
-    "char_39": "ל",
-    "char_40": "מ",
-    "char_41": "נ",
-    "char_42": "ס",
-    "char_43": "ע",
-    "char_44": "פ",
-    "char_45": "צ",
-    "char_46": "ק",
-    "char_47": "ר",
-    "char_48": "ש",
-    "char_49": "ת"
-  },
-  {
-    "char_1": "ا",
-    "char_2": "ب",
-    "char_3": "ت",
-    "char_4": "ث",
-    "char_5": "ج",
-    "char_6": "ح",
-    "char_7": "خ",
-    "char_8": "د",
-    "char_9": "ذ",
-    "char_10": "ر",
-    "char_11": "ز",
-    "char_12": "س",
-    "char_13": "ش",
-    "char_14": "ص",
-    "char_15": "ض",
-    "char_16": "ط",
-    "char_17": "ظ",
-    "char_18": "ع",
-    "char_19": "غ",
-    "char_20": "ف",
-    "char_21": "ق",
-    "char_22": "ك",
-    "char_23": "ل",
-    "char_24": "م",
-    "char_25": "ن",
-    "char_26": "ه",
-    "char_27": "و",
-    "char_28": "ي",
-    "char_29": "پ",
-    "char_30": "چ",
-    "char_31": "ژ",
-    "char_32": "گ",
-    "char_33": "ڤ"
-  },
-  {
-    "char_1": "Α",
-    "char_2": "Β",
-    "char_3": "Γ",
-    "char_4": "Δ",
-    "char_5": "Ε",
-    "char_6": "Ζ",
-    "char_7": "Η",
-    "char_8": "Θ",
-    "char_9": "Ι",
-    "char_10": "Κ",
-    "char_11": "Λ",
-    "char_12": "Μ",
-    "char_13": "Ν",
-    "char_14": "Ξ",
-    "char_15": "Ο",
-    "char_16": "Π",
-    "char_17": "Ρ",
-    "char_18": "Σ",
-    "char_19": "Τ",
-    "char_20": "Υ",
-    "char_21": "Φ",
-    "char_22": "Χ",
-    "char_23": "Ψ",
-    "char_24": "Ω"
-  },
-  {
-    "char_1": "А",
-    "char_2": "Б",
-    "char_3": "В",
-    "char_4": "Г",
-    "char_5": "Д",
-    "char_6": "Е",
-    "char_7": "Ё",
-    "char_8": "Ж",
-    "char_9": "З",
-    "char_10": "И",
-    "char_11": "Й",
-    "char_12": "К",
-    "char_13": "Л",
-    "char_14": "М",
-    "char_15": "Н",
-    "char_16": "О",
-    "char_17": "П",
-    "char_18": "Р",
-    "char_19": "С",
-    "char_20": "Т",
-    "char_21": "У",
-    "char_22": "Ф",
-    "char_23": "Х",
-    "char_24": "Ц",
-    "char_25": "Ч",
-    "char_26": "Ш",
-    "char_27": "Щ",
-    "char_28": "Ъ",
-    "char_29": "Ы",
-    "char_30": "Ь",
-    "char_31": "Э",
-    "char_32": "Ю",
-    "char_33": "Я"
-  },
-  {
-    "char_1": "ㄱ",
-    "char_2": "ㄲ",
-    "char_3": "ㄴ",
-    "char_4": "ㄷ",
-    "char_5": "ㄸ",
-    "char_6": "ㄹ",
-    "char_7": "ㅁ",
-    "char_8": "ㅂ",
-    "char_9": "ㅃ",
-    "char_10": "ㅅ",
-    "char_11": "ㅆ",
-    "char_12": "ㅇ",
-    "char_13": "ㅈ",
-    "char_14": "ㅉ",
-    "char_15": "ㅊ",
-    "char_16": "ㅋ",
-    "char_17": "ㅌ",
-    "char_18": "ㅍ",
-    "char_19": "ㅎ",
-    "char_20": "ㅏ",
-    "char_21": "ㅐ",
-    "char_22": "ㅑ",
-    "char_23": "ㅒ",
-    "char_24": "ㅓ",
-    "char_25": "ㅔ",
-    "char_26": "ㅕ",
-    "char_27": "ㅖ",
-    "char_28": "ㅗ",
-    "char_29": "ㅘ",
-    "char_30": "ㅙ",
-    "char_31": "ㅚ",
-    "char_32": "ㅛ",
-    "char_33": "ㅜ",
-    "char_34": "ㅝ",
-    "char_35": "ㅞ",
-    "char_36": "ㅟ",
-    "char_37": "ㅠ",
-    "char_38": "ㅡ",
-    "char_39": "ㅢ",
-    "char_40": "ㅣ"
-  },
-  {
-    "char_1": "अ",
-    "char_2": "आ",
-    "char_3": "इ",
-    "char_4": "ई",
-    "char_5": "उ",
-    "char_6": "ऊ",
-    "char_7": "ऋ",
-    "char_8": "ए",
-    "char_9": "ऐ",
-    "char_10": "ओ",
-    "char_11": "औ",
-    "char_12": "क",
-    "char_13": "ख",
-    "char_14": "ग",
-    "char_15": "घ",
-    "char_16": "ङ",
-    "char_17": "च",
-    "char_18": "छ",
-    "char_19": "ज",
-    "char_20": "झ",
-    "char_21": "ञ",
-    "char_22": "ट",
-    "char_23": "ठ",
-    "char_24": "ड",
-    "char_25": "ढ",
-    "char_26": "ण",
-    "char_27": "त",
-    "char_28": "थ",
-    "char_29": "द",
-    "char_30": "ध",
-    "char_31": "न",
-    "char_32": "प",
-    "char_33": "फ",
-    "char_34": "ब",
-    "char_35": "भ",
-    "char_36": "म",
-    "char_37": "य",
-    "char_38": "र",
-    "char_39": "ल",
-    "char_40": "व",
-    "char_41": "श",
-    "char_42": "ष",
-    "char_43": "स",
-    "char_44": "ह",
-    "char_45": "क्ष",
-    "char_46": "त्र",
-    "char_47": "ज्ञ"
-  },
-  {
-    "char_1": "ก",
-    "char_2": "ข",
-    "char_3": "ฃ",
-    "char_4": "ค",
-    "char_5": "ฅ",
-    "char_6": "ฆ",
-    "char_7": "ง",
-    "char_8": "จ",
-    "char_9": "ฉ",
-    "char_10": "ช",
-    "char_11": "ซ",
-    "char_12": "ฌ",
-    "char_13": "ญ",
-    "char_14": "ฎ",
-    "char_15": "ฏ",
-    "char_16": "ฐ",
-    "char_17": "ฑ",
-    "char_18": "ฒ",
-    "char_19": "ณ",
-    "char_20": "ด",
-    "char_21": "ต",
-    "char_22": "ถ",
-    "char_23": "ทธ",
-    "char_24": "น",
-    "char_25": "บ",
-    "char_26": "ป",
-    "char_27": "ผ",
-    "char_28": "ฝ",
-    "char_29": "พ",
-    "char_30": "ฟ",
-    "char_31": "ภ",
-    "char_32": "ม",
-    "char_33": "ย",
-    "char_34": "ร",
-    "char_35": "ล",
-    "char_36": "ว",
-    "char_37": "ศ",
-    "char_38": "ษ",
-    "char_39": "ส",
-    "char_40": "ห",
-    "char_41": "ฬ",
-    "char_42": "อ",
-    "char_43": "ฮ",
-    "char_44": "ะ",
-    "char_45": "า",
-    "char_46": "ิ",
-    "char_47": "ี",
-    "char_48": "ึ",
-    "char_49": "ื",
-    "char_50": "ุ",
-    "char_51": "ู",
-    "char_52": "เ",
-    "char_53": "แ",
-    "char_54": "โ",
-    "char_55": "ใ",
-    "char_56": "ไ"
-  },
-  {
-    "char_1": "ა",
-    "char_2": "ბ",
-    "char_3": "გ",
-    "char_4": "დ",
-    "char_5": "ე",
-    "char_6": "ვ",
-    "char_7": "ზ",
-    "char_8": "თ",
-    "char_9": "ი",
-    "char_10": "კ",
-    "char_11": "ლ",
-    "char_12": "მ",
-    "char_13": "ნ",
-    "char_14": "ჲ",
-    "char_15": "ო",
-    "char_16": "პ",
-    "char_17": "ჟ",
-    "char_18": "რ",
-    "char_19": "ს",
-    "char_20": "ტ",
-    "char_21": "უ",
-    "char_22": "ფ",
-    "char_23": "ქ",
-    "char_24": "ღ",
-    "char_25": "ყ",
-    "char_26": "შ",
-    "char_27": "ჩ",
-    "char_28": "ც",
-    "char_29": "ძ",
-    "char_30": "წ",
-    "char_31": "ჭ",
-    "char_32": "ხ",
-    "char_33": "ჯ",
-    "char_34": "ჰ"
-  }
-]; // Ton JSON (copié ou importé via fetch)
-let targetText = "Orbis";
-fetch('alphabets_rotated.json')
-  .then(res => res.json())
-  .then(data => alphabets = data);
+let alphabets = []; // Ton JSON (copié ou importé via fetch)
+let targetText = document.querySelector('.titre').innerHTML;
 
 // --- Fonction principale ---
 async function decodeText(targetText, totalDuration, elementId) {
+  // --- Chargement des alphabets ---
+  const res = await fetch('alphabets_rotated.json');
+  const alphabets = await res.json();
+
   if (!alphabets.length) {
     console.error("⚠️ Les alphabets ne sont pas encore chargés !");
     return;
@@ -642,29 +216,29 @@ async function decodeText(targetText, totalDuration, elementId) {
   const letters = targetText.split('');
   const steps = letters.length;
   const stepDuration = totalDuration / steps;
-  const random = arr => arr[Math.floor(Math.random() * arr.length)];
 
+  const random = arr => arr[Math.floor(Math.random() * arr.length)];
   let locked = 0;
 
   const interval = setInterval(() => {
+    // À chaque frame, on choisit un alphabet aléatoire
+    const currentAlphabet = random(alphabets);
+    const chars = Object.values(currentAlphabet).filter(c => c && c.trim() !== '');
+
     let displayed = '';
 
-    // Chaque caractère
     for (let i = 0; i < letters.length; i++) {
       if (i < locked) {
-        displayed += letters[i]; // lettre fixée
+        displayed += letters[i]; // lettres déjà fixées
       } else {
-        // choisir un alphabet correspondant au stade
-        const alpha = alphabets[i % alphabets.length];
-        const chars = Object.values(alpha);
-        displayed += random(chars);
+        displayed += random(chars); // caractères aléatoires dans cette langue
       }
     }
 
     el.textContent = displayed;
-  }, 50); // vitesse de "mutation" des lettres
+  }, 150); // fréquence de mutation (50ms)
 
-  // "locker" progressivement chaque lettre à intervalle régulier
+  // verrouillage progressif des lettres
   for (let i = 0; i <= letters.length; i++) {
     await new Promise(res => setTimeout(res, stepDuration));
     locked = i;
@@ -673,6 +247,14 @@ async function decodeText(targetText, totalDuration, elementId) {
   clearInterval(interval);
   el.textContent = targetText;
 }
+
+// --- Démarrage ---
+window.addEventListener('DOMContentLoaded', () => {
+  const targetText = document.querySelector('.titre').innerHTML;
+  decodeText(targetText, 11000, 'titre');
+});
+
+
     </script>
   </body>
 </html>
