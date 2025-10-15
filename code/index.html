@@ -9,7 +9,7 @@
         @font-face {
           font-family: "Français";
           src:
-            url("Francais.otf") format("opentype")
+            url("/fonts/Francais.otf") format("opentype")
         }
     
 
@@ -18,7 +18,6 @@
         margin: 0;
         padding: 0;
         overflow-x: hidden;
-        /* overflow-y: hidden; */
         font-family: system-ui, sans-serif;
         color: #fff;
         /* background-color: #000; */
@@ -27,6 +26,7 @@
       /* --- Section intro vidéo --- */
       body{
         background-color: #6b5e49;
+        overflow-y: hidden;
       }
       #intro {
         height: 100vh;
@@ -36,7 +36,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        overflow: hidden;
+        /* overflow: hidden; */
       }
 
       video.background {
@@ -126,22 +126,22 @@
     <!-- Intro vidéo -->
     <section id="intro">
       <video class="background" autoplay muted playsinline preload="auto">
-        <source src="Vidéo planète.mp4" type="video/mp4" />
+        <source src="/media/planete_film.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
-      <h1 class="titre" id="titre">Orbis</h1>
+      <h1 class="titre" id="titre">BABEL</h1>
     </section>
 
     <!-- Contenu principal -->
     <main id="main-content">
-      <header>
+<!--       <header>
         <ul>
           <li>Le Projet</li>
           <li>Nos Sources</li>
           <li>Qui sommes-nous ?</li>
           <li>Menu 4</li>
         </ul>
-      </header>
+      </header> -->
 
       <section>
         <canvas class="canvaTerre"></canvas>
@@ -174,7 +174,7 @@
       const video = document.querySelector("video.background");
       const main = document.getElementById("main-content");
 
-      function videoScroll() {
+      function videoScroll(video, main) {
         
       }
       // Attendre que la vidéo soit prête à jouer
@@ -204,7 +204,7 @@ let targetText = document.querySelector('.titre').innerHTML;
 // --- Fonction principale ---
 async function decodeText(targetText, totalDuration, elementId) {
   // --- Chargement des alphabets ---
-  const res = await fetch('alphabets_rotated.json');
+  const res = await fetch('/data/alphabets_rotated.json');
   const alphabets = await res.json();
 
   if (!alphabets.length) {
