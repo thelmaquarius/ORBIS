@@ -53,7 +53,7 @@
       }
 
       .titre {
-        font-size: 4rem;
+        font-size: clamp(1rem, 7vw, 4rem);
         /* background: rgba(0, 0, 0, 0.4); */
         padding: 1rem 2rem;
         border-radius: 1rem;
@@ -130,6 +130,7 @@
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
       <h1 class="titre" id="titre">BABEL</h1>
+      <p>Voyage au coeur des langues et cultures disparues</p>
     </section>
 
     <!-- Contenu principal -->
@@ -170,91 +171,6 @@
       </section>
     </main>
 
-    <script>
-      const video = document.querySelector("video.background");
-      const main = document.getElementById("main-content");
-
-      function videoScroll(video, main) {
-        
-      }
-      // Attendre que la vidéo soit prête à jouer
-      video.addEventListener("canplaythrough", () => {
-        console.log("Vidéo chargée, lancement du compte à rebours...");
-
-        // Lancer le défilement après 7 secondes (à ajuster)
-        setTimeout(() => {
-          window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-          main.classList.add("visible");
-        }, 14720);
-      });
-
-      // Sécurité : si la vidéo ne charge jamais, déclencher après 10s
-      setTimeout(() => {
-        if (!main.classList.contains("visible")) {
-          console.warn("Timeout forcé — la vidéo a peut-être mis trop de temps à charger.");
-          window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-          main.classList.add("visible");
-        }
-      }, 14720);
-
-      // --- Exemple de chargement des alphabets depuis ton fichier JSON ---
-let alphabets = []; // Ton JSON (copié ou importé via fetch)
-let targetText = document.querySelector('.titre').innerHTML;
-
-// --- Fonction principale ---
-async function decodeText(targetText, totalDuration, elementId) {
-  // --- Chargement des alphabets ---
-  const res = await fetch('/data/alphabets_rotated.json');
-  const alphabets = await res.json();
-
-  if (!alphabets.length) {
-    console.error("⚠️ Les alphabets ne sont pas encore chargés !");
-    return;
-  }
-
-  const el = document.getElementById(elementId);
-  const letters = targetText.split('');
-  const steps = letters.length;
-  const stepDuration = totalDuration / steps;
-
-  const random = arr => arr[Math.floor(Math.random() * arr.length)];
-  let locked = 0;
-
-  const interval = setInterval(() => {
-    // À chaque frame, on choisit un alphabet aléatoire
-    const currentAlphabet = random(alphabets);
-    const chars = Object.values(currentAlphabet).filter(c => c && c.trim() !== '');
-
-    let displayed = '';
-
-    for (let i = 0; i < letters.length; i++) {
-      if (i < locked) {
-        displayed += letters[i]; // lettres déjà fixées
-      } else {
-        displayed += random(chars); // caractères aléatoires dans cette langue
-      }
-    }
-
-    el.textContent = displayed;
-  }, 150); // fréquence de mutation (50ms)
-
-  // verrouillage progressif des lettres
-  for (let i = 0; i <= letters.length; i++) {
-    await new Promise(res => setTimeout(res, stepDuration));
-    locked = i;
-  }
-
-  clearInterval(interval);
-  el.textContent = targetText;
-}
-
-// --- Démarrage ---
-window.addEventListener('DOMContentLoaded', () => {
-  const targetText = document.querySelector('.titre').innerHTML;
-  decodeText(targetText, 11000, 'titre');
-});
-
-
-    </script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
