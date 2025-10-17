@@ -40,7 +40,7 @@ export async function decodeText(targetText, totalDuration, elementId) {
 
   clearInterval(interval);
 
-  // 🧩 Fin : afficher le texte final proprement
+  //  Fin : afficher le texte final proprement
   for (let i = 0; i < letters.length; i++) {
     spans[i].textContent = letters[i];
   }
