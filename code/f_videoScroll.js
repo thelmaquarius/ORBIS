@@ -4,7 +4,7 @@ export function initVideoScroll() {
   const main = document.getElementById("main-content");
   const intro = document.getElementById("intro");
   const body = document.querySelector("body");
-
+main.classList.add("visible");
   if (!video || !main) return;
 
   // Activer la boucle si tu veux qu’elle tourne en continu
@@ -18,7 +18,7 @@ export function initVideoScroll() {
 
     console.log("Déclenchement du scroll");
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-    main.classList.add("visible");
+    /* main.classList.add("visible"); */
     intro?.classList.add("fini");
     body.style.overflowY= 'visible';
   }
