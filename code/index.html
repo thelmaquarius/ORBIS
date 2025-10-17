@@ -14,17 +14,27 @@
     
 
       /* --- Structure générale --- */
+
+#titre {
+  display: inline-flex;
+  justify-content: center;
+}
+
+#titre .char {
+  display: inline-block;
+  text-align: center;
+  white-space: pre;
+}
       html, body {
         margin: 0;
         padding: 0;
-        overflow-x: hidden;
         font-family: system-ui, sans-serif;
-        color: #fff;
-        /* background-color: #000; */
+        color: #f6f4f4;
       }
 
       /* --- Section intro vidéo --- */
       body{
+        overflow-x: hidden;
         background-color: #6b5e49;
         overflow-y: hidden;
       }
@@ -36,8 +46,13 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        /* overflow: hidden; */
+        transition: all 1s ease-in-out;
       }
+
+      #intro.fini {
+        height: auto;
+      }
+
 
       video.background {
         opacity: 70%;
@@ -64,8 +79,8 @@
       /* --- Contenu principal --- */
       #main-content {
         opacity: 0;
-        transform: translateY(50px);
-        transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+/*transform: translateY(50px);
+        transition: opacity 1.2s ease-out, transform 1.2s ease-out; */
         background-color: #fafafa;
         color: #222;
       }
@@ -75,33 +90,8 @@
         transform: translateY(0);
       }
 
-      header {
-        background: #222;
-        color: white;
-        padding: 1rem;
-      }
-
-      header ul {
-        list-style: none;
-        display: flex;
-        gap: 2rem;
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-      }
-
-      header li {
-        cursor: pointer;
-        transition: color 0.3s;
-      }
-
-      header li:hover {
-        color: #00aaff;
-      }
-
       section {
-        max-width: 900px;
-        margin: 3rem auto;
+        margin: 1rem;
         padding: 1rem;
         line-height: 1.6;
       }
@@ -125,11 +115,11 @@
   <body>
     <!-- Intro vidéo -->
     <section id="intro">
-      <video class="background" autoplay muted playsinline preload="auto">
+      <video class="background" autoplay loop muted playsinline preload="auto">
         <source src="/media/planete_film.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
-      <h1 class="titre" id="titre">BABEL</h1>
+      <h1 class="titre" id="titre">ORBIS</h1>
       <p>Voyage au coeur des langues et cultures disparues</p>
     </section>
 
