@@ -2,10 +2,12 @@
 import { initVideoScroll } from './f_videoScroll.js';
 import { decodeText } from './f_decodeText.js';
 import { mapCreate } from './map_create.js';
+import { initScrollGraph } from './scrollGraph.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   mapCreate();
   initVideoScroll();
+  initScrollGraph();
 
   const titreElement = document.querySelector('.titre');
   if (titreElement) {

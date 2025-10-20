@@ -111,6 +111,56 @@
         height: 200px;
         background: #eee;
       }
+
+.scroll-graph {
+  position: sticky;
+  top: 0;
+  background: #0a0a0a;
+  padding: 2rem 3rem;
+  font-family: system-ui, sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lang-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lang-flag {
+  width: 32px;
+  height: 22px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.lang-label {
+  width: 120px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.lang-bar {
+  flex: 1;
+  height: 16px;
+  background: linear-gradient(90deg, #38bdf8, #3b82f6);
+  border-radius: 10px;
+  width: 0%;
+  transition: width 0.3s ease-out;
+}
+
+#year-display {
+  position: absolute;
+  right: 3rem;
+  top: 1.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  opacity: 0.3;
+}
+
     </style>
   </head>
 
@@ -147,6 +197,7 @@
           culpa quidem. Commodi, accusamus repellendus.
         </p>
         <div class="separateur"></div>
+        <main id="graph-container"></main>
       </section>
 
       <section>
