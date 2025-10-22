@@ -97,6 +97,7 @@
         margin: 1rem;
         padding: 1rem;
         line-height: 1.6;
+        position: relative;
       }
 
       .separateur {
@@ -159,10 +160,10 @@
           omnis! Dolores iure ut molestias harum similique delectus explicabo
           culpa quidem. Commodi, accusamus repellendus.
         </p>
-        <div class="separateur"></div>
-        <div id="graph-container">
-          <canvas id="myChart"></canvas>
-        </div>
+<div id="graph-container" class="relative">
+  <canvas id="myChart"></canvas>
+  <div id="year-overlay" class="year-overlay">1900</div>
+</div>
       </section>
 
       <section>
