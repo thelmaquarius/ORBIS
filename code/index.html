@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orbis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
@@ -112,55 +113,6 @@
         background: #eee;
       }
 
-.scroll-graph {
-  position: sticky;
-  top: 0;
-  background: #0a0a0a;
-  padding: 2rem 3rem;
-  font-family: system-ui, sans-serif;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.lang-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.lang-flag {
-  width: 32px;
-  height: 22px;
-  object-fit: cover;
-  border-radius: 3px;
-}
-
-.lang-label {
-  width: 120px;
-  text-align: left;
-  font-size: 0.95rem;
-}
-
-.lang-bar {
-  flex: 1;
-  height: 16px;
-  background: linear-gradient(90deg, #38bdf8, #3b82f6);
-  border-radius: 10px;
-  width: 0%;
-  transition: width 0.3s ease-out;
-}
-
-#year-display {
-  position: absolute;
-  right: 3rem;
-  top: 1.5rem;
-  font-size: 3rem;
-  font-weight: 700;
-  opacity: 0.3;
-}
-
     </style>
   </head>
 
@@ -185,7 +137,18 @@
           <li>Menu 4</li>
         </ul>
       </header> -->
-
+      <section>
+        <img src="/media/lost-valley.jpg" alt="">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
+          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
+          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
+          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
+          omnis! Dolores iure ut molestias harum similique delectus explicabo
+          culpa quidem. Commodi, accusamus repellendus.
+        </p>
+        <div class="separateur"></div>
+      </section>
       <section>
         <div id="map"></div>
         <p>
@@ -197,11 +160,61 @@
           culpa quidem. Commodi, accusamus repellendus.
         </p>
         <div class="separateur"></div>
-        <div id="graph-container"></div>
+        <div id="graph-container">
+          <canvas id="myChart"></canvas>
+        </div>
       </section>
 
       <section>
-        <canvas class="canvaTerre"></canvas>
+        <img src="/media/lost-valley.jpg" alt="">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
+          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
+          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
+          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
+          omnis! Dolores iure ut molestias harum similique delectus explicabo
+          culpa quidem. Commodi, accusamus repellendus.
+        </p>
+        <div class="separateur"></div>
+      </section>
+            <section>
+        <img src="/media/lost-valley.jpg" alt="">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
+          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
+          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
+          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
+          omnis! Dolores iure ut molestias harum similique delectus explicabo
+          culpa quidem. Commodi, accusamus repellendus.
+        </p>
+        <div class="separateur"></div>
+      </section>
+            <section>
+        <img src="/media/lost-valley.jpg" alt="">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
+          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
+          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
+          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
+          omnis! Dolores iure ut molestias harum similique delectus explicabo
+          culpa quidem. Commodi, accusamus repellendus.
+        </p>
+        <div class="separateur"></div>
+      </section>
+            <section>
+        <img src="/media/lost-valley.jpg" alt="">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
+          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
+          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
+          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
+          omnis! Dolores iure ut molestias harum similique delectus explicabo
+          culpa quidem. Commodi, accusamus repellendus.
+        </p>
+        <div class="separateur"></div>
+      </section>
+            <section>
+        <img src="/media/lost-valley.jpg" alt="">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
           accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
