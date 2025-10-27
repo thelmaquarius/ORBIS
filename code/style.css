@@ -128,3 +128,7 @@ canvas.canvaTerre {
   user-select: none;
   z-index: 10;
 }
+
+#chartChart{
+  height:40vh;
+}
