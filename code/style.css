@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: system-ui, sans-serif;
-  color: #f5f5f5;
+  color: #ffffff; /* texte plus blanc pour meilleur contraste */
   overflow-x: hidden;
   background: url("/media/backmap.jpg") center/cover fixed no-repeat;
 }
@@ -57,11 +57,12 @@ header#intro {
   font-family: "Français", serif;
   font-size: clamp(2rem, 7vw, 6rem);
   letter-spacing: 0.1em;
-  color: #fff;
+  color: #ffffff;
   text-transform: uppercase;
   font-weight: 400;
   line-height: 1;
   margin: 0;
+  text-shadow: 0 0 10px rgba(255,255,255,0.4);
   transition: all 1.2s ease-in-out;
 }
 
@@ -70,8 +71,9 @@ header#intro {
   margin-top: 0.8rem;
   font-size: 1.2rem;
   font-weight: 300;
-  color: #eee;
+  color: #f8f8f8;
   letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(255,255,255,0.3);
   transition: all 1.2s ease-in-out;
 }
 
@@ -107,7 +109,7 @@ header#intro {
 /* Sous-titre plus discret */
 #intro.fini p {
   font-size: 1rem;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 /* === CONTENU PRINCIPAL ===
@@ -137,7 +139,7 @@ section {
   max-width: 1000px;
   padding: clamp(4rem, 10vh, 8rem) 5vw;
   line-height: 1.7;
-  color: #f0f0f0;
+  color: #ffffff;
 }
 
 section img {
@@ -147,16 +149,17 @@ section img {
 }
 
 section p {
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(5px); /* lisibilité sur fond complexe */
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px); /* lisibilité sur fond complexe */
   padding: 1.5rem 2rem;
   border-radius: 10px;
-  color: #f1f1f1;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.25);
 }
 
 .separateur {
   height: 1px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.25);
   margin: 4rem 0;
 }
 
@@ -193,9 +196,9 @@ svg.fil {
   z-index: 0;
 }
 .segment.active {
-  background: #fff;
+  background: #ffffff;
   transform: translate(-50%, -50%) scale(1.6);
-  box-shadow: 0 0 12px #fff;
+  box-shadow: 0 0 12px #ffffff;
 }
 
 /* === GRAPH + MAP ===
@@ -222,9 +225,43 @@ svg.fil {
   justify-content: center;
   font-size: clamp(3rem, 10vw, 12rem);
   font-weight: 700;
-  color: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.2); /* plus lumineux qu’avant */
+  text-shadow: 0 0 25px rgba(255,255,255,0.25);
   pointer-events: none;
   user-select: none;
+}
+
+/* === SLIDER D’ANNÉE === */
+#year-slider-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+#year-slider {
+  width: 80%;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #fc7d15, #e93d3d);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#year-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  transition: transform 0.2s ease;
+}
+
+#year-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
 }
 
 /* === NORMALISATION ===
@@ -233,4 +270,49 @@ svg.fil {
 html, body {
   margin: 0;
   padding: 0;
+}
+
+
+/* === FIL ET ANCRES DYNAMIQUES === */
+.fil-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#fil-dynamique {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ancres-wrapper {
+  position: relative;
+  width: 100%;
+  height: 2000px; /* permet de voir les courbes sur plusieurs sections */
+}
+
+.ancre {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 12px #fff;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+}
+
+/* Lignes dessinées par JS */
+#fil-dynamique path {
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+  fill: none;
 }

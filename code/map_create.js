@@ -4,7 +4,11 @@ export function mapCreate() {
     .then((response) => response.json())
     .then((data) => {
       // Création de la carte
-      const map = L.map("map").setView([20, 0], 2);
+       var map = L.map('map', {
+        center: [49.0, 15.0],
+        zoom: 5,
+        scrollWheelZoom: false
+    });
 
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
