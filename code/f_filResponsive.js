@@ -4,7 +4,6 @@
 // -----------------------------------------------------
 // - Chaque section “.bloc” possède .ancre-start et .ancre-end
 // - Ce script relie automatiquement la fin d’un bloc au suivant
-// - Le tracé est recalculé à chaque redimensionnement ou scroll
 // =====================================================
 
 export function initFilResponsive() {
@@ -31,14 +30,14 @@ export function initFilResponsive() {
     svg.setAttribute("width", window.innerWidth);
     svg.setAttribute("height", totalHeight);
     svg.setAttribute("viewBox", `0 0 ${window.innerWidth} ${totalHeight}`);
-    svg.innerHTML = ""; // Réinitialisation complète
+    svg.innerHTML = ""; // nettoyage complet
 
-    // 2️⃣ Décalage vertical lié au header (vidéo)
+    // ⚠️ ⚠️ ⚠️ On définit D’ABORD le headerOffset avant tout calcul
     const intro = document.getElementById("intro");
     const headerOffset =
       intro && intro.classList.contains("fini") ? intro.offsetHeight : 0;
 
-    // 3️⃣ Calcul des coordonnées absolues pour chaque ancre
+    // 2️⃣ Calcul des coordonnées absolues pour chaque ancre
     const points = ancres.map((a) => {
       const rect = a.getBoundingClientRect();
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -49,13 +48,12 @@ export function initFilResponsive() {
       };
     });
 
-    // 4️⃣ Connexion des paires : end d’un bloc → start du suivant
+    // 3️⃣ Relier les paires d’ancres (end → start du bloc suivant)
     const starts = [...document.querySelectorAll(".ancre-start")];
     starts.forEach((start, i) => {
       const end = start.closest(".bloc")?.querySelector(".ancre-end");
       const nextStart = starts[i + 1];
 
-      // On relie la fin d’un bloc à son propre end, puis à celui du bloc suivant
       if (end && nextStart) {
         const p1 = points.find((p) => p.el === end);
         const p2 = points.find((p) => p.el === nextStart);
@@ -85,13 +83,10 @@ export function initFilResponsive() {
   }
 
   // =====================================================
-  // 🔁 Rafraîchissement automatique
+  // 🔁 Rafraîchissement automatique (scroll / resize)
   // =====================================================
   const debouncedMajFil = debounce(majFil, 100);
-
-  // Dessin initial après petit délai (pour laisser le DOM se stabiliser)
   setTimeout(majFil, 600);
-
   window.addEventListener("resize", debouncedMajFil);
   window.addEventListener("scroll", debouncedMajFil);
 }

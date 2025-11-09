@@ -163,44 +163,6 @@ section p {
   margin: 4rem 0;
 }
 
-/* === FIL SERPENTANT ===
-   SVG placé derrière les sections, suit la hauteur totale de la page.
-   pointer-events none : n’intercepte pas le scroll ni le clic.
-*/
-.fil-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(90vw, 800px);
-  height: 5200px;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.35;
-}
-
-svg.fil {
-  width: 100%;
-  height: 100%;
-}
-
-/* Segments du fil activés dynamiquement au scroll */
-.segment {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  background: #ffffff40;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: .4s, transform .4s, box-shadow .4s;
-  z-index: 0;
-}
-.segment.active {
-  background: #ffffff;
-  transform: translate(-50%, -50%) scale(1.6);
-  box-shadow: 0 0 12px #ffffff;
-}
-
 /* === GRAPH + MAP ===
    overflow hidden empêche les débordements de cartes interactives.
 */
@@ -272,47 +234,45 @@ html, body {
   padding: 0;
 }
 
-
-/* === FIL ET ANCRES DYNAMIQUES === */
+/* === ANCRES + FIL DYNAMIQUE ===
+   Ces ancres sont invisibles et servent à générer automatiquement les liaisons SVG.
+*/
 .fil-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
 }
 
 #fil-dynamique {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  display: block;
 }
 
-.ancres-wrapper {
-  position: relative;
-  width: 100%;
-  height: 2000px; /* permet de voir les courbes sur plusieurs sections */
-}
-
+/* Chaque ancre est un point invisible dans la page */
 .ancre {
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 12px #fff;
-  z-index: 2;
-  transform: translate(-50%, -50%);
+  background: transparent;
+  z-index: 5;
 }
 
-/* Lignes dessinées par JS */
-#fil-dynamique path {
-  stroke: rgba(255, 255, 255, 0.8);
+/* Mode debug (activer temporairement) */
+.ancre.debug {
+  background: rgba(255,255,255,0.5);
+  outline: 1px solid #fff;
+}
+
+/* Fil stylisé en pointillés blancs */
+.fil-ligne {
+  fill: none;
+  stroke: rgba(255,255,255,0.6);
   stroke-width: 2;
   stroke-dasharray: 6 6;
-  fill: none;
 }
