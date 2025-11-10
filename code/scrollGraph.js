@@ -1,9 +1,8 @@
-// scrollGraph.js
 // ========================================
 // Graphique à barres (Chart.js) avec sélection d’année par curseur
 // ========================================
 export async function initScrollGraph() {
-  // --- 1️ Chargement des données JSON ---
+  // --- Chargement des données JSON ---
   const res = await fetch("/data/evolution_20_langues_interpolated.json");
   const data = await res.json();
 
@@ -12,7 +11,7 @@ export async function initScrollGraph() {
     return;
   }
 
-  // --- 2️ Extraction des métadonnées ---
+  // --- Extraction des métadonnées ---
   const allYears = Object.keys(data[0])
     .filter((key) => /^\d{4}$/.test(key))
     .map(Number)
@@ -43,7 +42,7 @@ export async function initScrollGraph() {
     "#c15b1fff",
   ];
 
-  // --- 3️ Initialisation du graphique ---
+  // --- Initialisation du graphique ---
   const ctx = document.getElementById("myChart").getContext("2d");
   const yearDisplay = document.getElementById("year-display");
 
@@ -101,7 +100,7 @@ export async function initScrollGraph() {
     },
   });
 
-  // --- 4️⃣ Barre de sélection d’année ---
+  // --- Barre de sélection d’année ---
   const slider = document.getElementById("year-slider");
   slider.min = allYears[0];
   slider.max = allYears[allYears.length - 1];

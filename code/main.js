@@ -3,13 +3,13 @@ import { initVideoScroll } from './f_videoScroll.js';
 import { decodeText } from './f_decodeText.js';
 import { mapCreate } from './map_create.js';
 import { initScrollGraph } from './scrollGraph.js';
-import { initFilResponsive } from './f_filResponsive.js';
+import { initFilScroll } from './f_filScroll.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   mapCreate();
   initVideoScroll();
   initScrollGraph();
-  initFilResponsive();
+    initFilScroll();
 
   const titreElement = document.querySelector('.titre');
   if (titreElement) {

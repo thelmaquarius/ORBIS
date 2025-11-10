@@ -1,101 +1,198 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orbis</title>
 
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbis</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-  </head>
 
-  <body>
-    <!-- =======================
-         INTRO VIDÉO
-    ======================== -->
-    <header id="intro">
-      <video class="background" autoplay loop muted playsinline preload="auto">
-        <source src="/media/planete_film.mp4" type="video/mp4" />
-        Votre navigateur ne supporte pas la vidéo HTML5.
-      </video>
-      <h1 class="titre" id="titre">ORBIS</h1>
-      <p>Voyage au cœur des langues et cultures disparues</p>
-    </header>
+</head>
 
-    <!-- =======================
-         FIL DYNAMIQUE GLOBAL
-    ======================== -->
+<body>
+  <!-- Intro vidéo -->
+  <header id="intro">
+    <video class="background" autoplay loop muted playsinline preload="auto">
+      <source src="/media/planet_loop.mp4" type="video/mp4" />
+      Votre navigateur ne supporte pas la vidéo HTML5.
+    </video>
+    <h1 class="titre" id="titre">ORBIS</h1>
+    <p>Voyage au coeur des langues et cultures disparues</p>
+  </header>
+
+  <!-- Contenu principal -->
+  <main id="main-content">
+    <!-- === FIL SERPENTANT === -->
     <div class="fil-container">
-      <svg id="fil-dynamique"></svg>
+      <svg class="fil" viewBox="0 0 800 5200">
+        <path id="chemin" d="M400 0
+           C 300 300, 500 600, 400 900
+           C 250 1300, 550 1600, 400 1900
+           C 200 2300, 600 2600, 400 3000
+           C 300 3400, 500 3700, 400 4100
+           C 250 4400, 600 4700, 400 5200" fill="none" stroke="white" stroke-width="2" stroke-dasharray="6 6" />
+      </svg>
     </div>
 
-    <!-- =======================
-         CONTENU PRINCIPAL
-    ======================== -->
-    <main id="main-content">
+    <!-- === SEGMENTS DE PROGRESSION === -->
+    <div class="segment" style="--pos:0.06"></div>
+    <div class="segment" style="--pos:0.28"></div>
+    <div class="segment" style="--pos:0.50"></div>
+    <div class="segment" style="--pos:0.72"></div>
+    <div class="segment" style="--pos:0.93"></div>
 
-      <!-- === Bloc 1 === -->
-      <section class="bloc">
-        <div class="ancre ancre-start" id="a1-start"></div>
+    <!-- === Sections existantes === -->
+    <!--       <header>
+        <ul>
+          <li>Le Projet</li>
+          <li>Nos Sources</li>
+          <li>Qui sommes-nous ?</li>
+          <li>Menu 4</li>
+        </ul>
+      </header> -->
+    <section class="section_1">
+      <div class="container_1">
+        <div class="texte_1">
+          <p class="partie_1">
+            <span class="texte-machine">
+              Chaque langue raconte le lien intime entre un peuple et son environnement.
+              Certaines résonnent encore dans le quotidien de millions de personnes,
+              d’autres s’éteignent peu à peu. Elles renferment des savoirs, des histoires
+              et des expressions impossibles à traduire, témoignant d’une manière unique
+              de voir le monde. Ce projet les met en lumière à travers la photographie,
+              la cartographie et des témoignages audio.
+            </span>
+          </p>
 
-        <img src="/media/lost-valley.jpg" alt="Image 1" />
-        <p>
-          Exemple de premier bloc avec une ancre de départ et une ancre de sortie.
-        </p>
+        </div>
+        <div class="images_1">
+          <img src="/media/hieroglyphes.png" alt="Image 1" class="img1">
+        </div>
+      </div>
+    </section>
 
-        <div class="ancre ancre-end" id="a1-end"></div>
+    <!-- Section carte -->
+    <section>
+      <div id="map"></div>
+
+      <section class="section-langues">
+        <div class="bloc-texte">
+          <p>
+            De nouvelles langues apparaissent encore aujourd’hui, même si c’est rare.
+            Elles naissent souvent du mélange de plusieurs langues (comme les créoles)
+            ou de nouvelles formes de communication entre communautés, notamment en ligne.
+            Certaines apparaissent aussi dans des groupes isolés ou des jeunes générations
+            qui inventent leur propre manière de parler.
+          </p>
+        </div>
+
+        <div class="grille-langues">
+          <!-- Carte 1 -->
+          <article class="carte-langue">
+            <img src="/media/creole_haitien.jpg" alt="Créole haïtien" class="image-langue" />
+            <h3 class="nom-langue">Créole haïtien</h3>
+            <p class="dates-langue">XVIIe–XIXe</p>
+            <p class="langue-description">description</p>
+            <button class="bouton-lecture" aria-label="Lire l'extrait audio du Créole haïtien">▶︎ Lecture</button>
+            <audio preload="none" src="/media/creole_haitien.mp3"></audio>
+          </article>
+
+          <!-- Carte 2 -->
+          <article class="carte-langue">
+            <img src="/media/metchif.jpg" alt="Métchif" class="image-langue" />
+            <h3 class="nom-langue">Métchif</h3>
+            <p class="dates-langue">XVIIIe</p>
+            <p class="langue-description">description</p>
+            <button class="bouton-lecture" aria-label="Lire l'extrait audio du Métchif">▶︎ Lecture</button>
+            <audio preload="none" src="/media/tout_pour_toi.mp3"></audio>
+          </article>
+
+          <!-- Carte 3 -->
+          <article class="carte-langue">
+            <img src="/media/afrikaans.jpg" alt="Afrikaans" class="image-langue" />
+            <h3 class="nom-langue">Afrikaans</h3>
+            <p class="dates-langue">XVIIe–XVIIIe</p>
+            <p class="langue-description">description</p>
+            <button class="bouton-lecture" aria-label="Lire l'extrait audio de l’Afrikaans">▶︎ Lecture</button>
+            <audio preload="none" src="/media/afrikaans.mp3"></audio>
+          </article>
+        </div>
       </section>
 
-      <!-- === Bloc 2 (carte) === -->
-      <section class="bloc">
-        <div class="ancre ancre-start" id="a2-start"></div>
 
-        <div id="map"></div>
-        <p>
-          Exemple de deuxième bloc (ici une carte) relié au précédent par un fil courbé.
-        </p>
-
-        <div class="ancre ancre-end" id="a2-end"></div>
+      <section class="image-texte">
+        <div class="image-container">
+          <img src="/media/gens5.jpeg" alt="">
+          <p class="overlay-text">
+            En Papouasie-Nouvelle-Guinée, on parle près de 840 langues différentes pour un seul pays,
+            ce qui représente environ 12 % de toutes les langues du monde, pour à peine 9 millions d’habitants.
+          </p>
+        </div>
       </section>
 
-      <!-- === Bloc 3 (graphique) === -->
-      <section class="bloc">
-        <div class="ancre ancre-start" id="a3-start"></div>
-
+      <section>
         <div id="graph-container" class="relative">
+          <!-- amCharts va dessiner ici -->
           <canvas id="myChart"></canvas>
 
-          <!-- Barre de sélection d’année -->
-          <div id="year-slider-container">
-            <input
-              type="range"
-              id="year-slider"
-              min="1900"
-              max="2025"
-              step="1"
-              value="1900"
-            />
-          </div>
-
-          <!-- Overlay de l’année -->
+          <!-- overlay de l’année -->
           <div id="year-display">1900</div>
         </div>
 
-        <p>Graphique final relié avec les précédents éléments.</p>
-
-        <div class="ancre ancre-end" id="a3-end"></div>
+        <!-- Barre de sélection d’année -->
+        <div id="year-slider-container">
+          <div class="slider-tooltip">💡 Glissez pour changer l’année</div>
+          <input type="range" id="year-slider" min="1900" max="2025" step="1" value="1900" />
+        </div>
       </section>
 
-      <!-- === Autres sections de contenu === -->
-      <section>
-        <img src="/media/lost-valley.jpg" alt="" />
+      <section class="section_infos">
+        <div class="texte_infos">
+          <p>
+            Partout dans le monde, des langues s’éteignent peu à peu. Certaines ne sont plus parlées que par une dizaine
+            de personnes, d’autres n’existent plus que dans des archives.
+          </p>
+        </div>
+
+        <div class="stats_infos">
+          <div class="bloc_infos">
+            <p>
+              Sur les <strong>7 162</strong> langues vivantes recensées dans le monde, seule une minorité est réellement
+              stable, car beaucoup ne sont plus transmises aux jeunes générations.
+            </p>
+          </div>
+
+          <div class="separateurs_infos"></div>
+
+          <div class="bloc_infos">
+            <p>
+              Selon Ethnologue, plus de <strong>3000</strong> langues sont aujourd’hui menacées de disparition, ce qui
+              représente près de <strong>40 %</strong> des langues connues.
+            </p>
+          </div>
+
+          <div class="separateurs_infos"></div>
+
+          <div class="bloc_infos">
+            <p>
+              Environ <strong>410</strong> langues ne sont plus parlées que par des personnes âgées, tandis que
+              <strong>278</strong> sont déjà en voie d’extinction rapide.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- <section>
+        <img src="/media/lost-valley.jpg" alt="">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
           accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
@@ -106,9 +203,8 @@
         </p>
         <div class="separateur"></div>
       </section>
-
-      <section>
-        <img src="/media/lost-valley.jpg" alt="" />
+            <section>
+        <img src="/media/lost-valley.jpg" alt="">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
           accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
@@ -119,9 +215,8 @@
         </p>
         <div class="separateur"></div>
       </section>
-
-      <section>
-        <img src="/media/lost-valley.jpg" alt="" />
+            <section>
+        <img src="/media/lost-valley.jpg" alt="">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
           accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
@@ -132,9 +227,8 @@
         </p>
         <div class="separateur"></div>
       </section>
-
-      <section>
-        <img src="/media/lost-valley.jpg" alt="" />
+            <section>
+        <img src="/media/lost-valley.jpg" alt="">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
           accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
@@ -144,27 +238,14 @@
           culpa quidem. Commodi, accusamus repellendus.
         </p>
         <div class="separateur"></div>
-      </section>
+      </section> -->
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
+    </script>
+  <script type="module" src="./main.js"></script>
+  <script type="module" src="./script.js"></script>
 
-      <!-- === Code ancien conservé en commentaire === -->
-      <!--
-      <div class="ancres-wrapper">
-        <div class="ancre" id="a1" style="top: 400px; left: 50%;"></div>
-        <div class="ancre" id="a2" style="top: 1000px; left: 40%;"></div>
-        <div class="ancre" id="a3" style="top: 1600px; left: 60%;"></div>
-      </div>
-      -->
-    </main>
+</body>
 
-    <!-- =======================
-         SCRIPTS
-    ======================== -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-
-    <script type="module" src="./main.js"></script>
-  </body>
 </html>

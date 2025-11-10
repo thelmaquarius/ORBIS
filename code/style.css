@@ -5,8 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: system-ui, sans-serif;
-  color: #ffffff; /* texte plus blanc pour meilleur contraste */
+  font-family: Montserrat, sans-serif;
+  color: #f5f5f5;
   overflow-x: hidden;
   background: url("/media/backmap.jpg") center/cover fixed no-repeat;
 }
@@ -57,12 +57,11 @@ header#intro {
   font-family: "Français", serif;
   font-size: clamp(2rem, 7vw, 6rem);
   letter-spacing: 0.1em;
-  color: #ffffff;
+  color: #fff;
   text-transform: uppercase;
   font-weight: 400;
   line-height: 1;
   margin: 0;
-  text-shadow: 0 0 10px rgba(255,255,255,0.4);
   transition: all 1.2s ease-in-out;
 }
 
@@ -71,9 +70,8 @@ header#intro {
   margin-top: 0.8rem;
   font-size: 1.2rem;
   font-weight: 300;
-  color: #f8f8f8;
+  color: #eee;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 8px rgba(255,255,255,0.3);
   transition: all 1.2s ease-in-out;
 }
 
@@ -109,7 +107,7 @@ header#intro {
 /* Sous-titre plus discret */
 #intro.fini p {
   font-size: 1rem;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 /* === CONTENU PRINCIPAL ===
@@ -134,34 +132,364 @@ header#intro {
    margin:0 évite un espace résiduel sous le bandeau vidéo.
 */
 section {
+  max-width: 1400px;
   position: relative;
   margin: 0 auto;
-  max-width: 1000px;
+ 
   padding: clamp(4rem, 10vh, 8rem) 5vw;
   line-height: 1.7;
-  color: #ffffff;
+  color: #f0f0f0;
 }
 
-section img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 2rem;
+.container_1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 180px 10px;
+  flex-wrap: nowrap; /* reste côte à côte sur grand écran */
 }
 
-section p {
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(6px); /* lisibilité sur fond complexe */
+.texte_1 {
+  flex: 3 1 500px;
+  max-width: 60%;
+}
+
+.partie_1 {
   padding: 1.5rem 2rem;
-  border-radius: 10px;
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255,255,255,0.25);
+  border-radius: 15px;
+  color: #f1f1f1;
+  background: #21428356;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
-.separateur {
-  height: 1px;
-  background: rgba(255,255,255,0.25);
-  margin: 4rem 0;
+/* Texte tapé en multilignes + curseur clignotant */
+.texte-machine {
+  display: inline;
+  white-space: normal;            /* multilignes */
+  position: relative;
 }
+
+/* Curseur */
+.texte-machine::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #fff;
+  margin-left: 4px;
+  vertical-align: -0.1em;
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Préfère moins d’animations si l’utilisateur a réduit les mouvements */
+@media (prefers-reduced-motion: reduce) {
+  .texte-machine::after { animation: none; }
+}
+
+
+/* Conteneur image circulaire et responsive */
+.images_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25vw; /* taille proportionnelle à la largeur de l’écran */
+  max-width: 300px; /* limite sur grand écran */
+  aspect-ratio: 1 / 1; /* garde la forme carrée */
+  margin-left: 80px;
+  position: relative;
+  flex-shrink: 0; /* évite que l’image se compresse */
+}
+
+/* Image ronde avec halo lumineux */
+.images_1 .img1 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 25px 10px #ffac3f80;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.images_1 .img1:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px 15px #cbaf51b3;
+}
+
+/* Responsive pour écrans <= 768px */
+@media (max-width: 768px) {
+  .container_1 {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+
+  .texte_1, .images_1 {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .images_1 {
+    width: 50vw; /* un peu plus grande sur petit écran */
+    max-width: 220px;
+    margin-top: 20px;
+  }
+}
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  justify-content: center; /* centre horizontalement */
+  align-items: center;  
+}
+
+.image-container img {
+  width: 80%;
+  height: auto;
+
+}
+
+.overlay-text {
+  position: absolute;
+  top: -50px; /* avant : 15px → plus haut */
+  right: 15px;
+  background: #FEF9EB;
+  color: black;
+  padding: 18px 25px; /* plus d’espace autour du texte */
+  max-width: 360px; /* rectangle un peu plus long */
+  font-size: 1rem;
+  line-height: 1.4;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border: 2px solid black;
+}
+
+/* NOUVELLES LANGUES */
+.section-langues {
+  padding: 50px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  background: url('background.jpg') no-repeat center/cover;
+}
+
+/* TEXTE INTRO */
+.bloc-texte {
+  max-width: 900px;
+  margin: 0 auto 32px auto;
+  font-size: 18px;
+  line-height: 1.6;
+  background: rgba(10, 20, 40, 0.6);
+  backdrop-filter: blur(4px);
+  border-radius: 14px;
+  padding: 18px 22px;
+}
+
+/* GRILLE DES CARTES */
+.grille-langues {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 40px; /* ↑ espace augmenté entre les cartes */
+  align-items: stretch;
+}
+
+
+/* CHAQUE CARTE */
+.carte-langue {
+  background: rgba(12, 18, 34, 0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.carte-langue:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+}
+
+/* IMAGE RECTANGULAIRE (sans halo) */
+.image-langue {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+
+  margin-bottom: 12px;
+}
+
+/* NOM + DATES */
+.nom-langue {
+  margin: 6px 0 2px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.dates-langue {
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* BOUTON PLAY/PAUSE */
+.bouton-lecture {
+  appearance: none;
+  border: 1px solid rgba(180, 200, 255, 0.5);
+  background: linear-gradient(180deg, rgba(30, 50, 100, 0.7), rgba(20, 35, 70, 0.7));
+  color: #eaf0ff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.bouton-lecture:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  border-color: rgba(200, 220, 255, 0.8);
+}
+
+
+.bouton-lecture.en-lecture {
+  background: linear-gradient(180deg, rgba(60, 90, 160, 0.85), rgba(40, 65, 120, 0.85));
+  border-color: rgba(200, 220, 255, 0.9);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .grille-langues {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .section-langues {
+    padding: 28px 18px;
+  }
+  .grille-langues {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stats_infos {
+  display: flex;
+  justify-content: center; /* centre la rangée de blocs */
+  align-items: center;
+  gap: 40px;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+}
+
+.section_infos {
+  max-width: none;
+}
+
+.texte_infos {
+  margin: 50px 0;
+}
+
+.bloc_infos {
+  width: 300px;
+  height: 150px;
+  background: #21428356;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;      /* centre verticalement le texte */
+  justify-content: center;  /* centre horizontalement le texte */
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bloc_infos p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.section_infos strong {
+  color: lab(88.35% 3.29 25.23); /* doré clair */
+  text-shadow: 0 0 15px #fecf7799;
+  font-weight: 600;
+}
+
+.bloc_infos:hover {
+  transform: scale(1.05);
+}
+
+.separateurs_infos {
+  width: 3px;
+  height: 160px; /* hauteur adaptée à celle des blocs */
+  background-color: #fde6ac;
+  border-radius: 2px;
+  opacity: 0.7;
+  align-self: center;
+}
+
+/* Responsive : 2 blocs puis 1 sur petits écrans */
+@media (max-width: 1000px) {
+  .stats_infos {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .separateurs_infos {
+    display: none;
+  }
+}
+
+
+
+
+/* === FIL SERPENTANT ===
+   SVG placé derrière les sections, suit la hauteur totale de la page.
+   pointer-events none : n’intercepte pas le scroll ni le clic.
+*/
+.fil-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90vw, 800px);
+  height: 5200px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+svg.fil {
+  width: 100%;
+  height: 100%;
+}
+
+/* Segments du fil activés dynamiquement au scroll */
+/* .segment {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ffffff40;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: .4s, transform .4s, box-shadow .4s;
+  z-index: 0;
+} */
+/* .segment.active {
+  background: #fff;
+  transform: translate(-50%, -50%) scale(1.6);
+  box-shadow: 0 0 12px #fff;
+} */
 
 /* === GRAPH + MAP ===
    overflow hidden empêche les débordements de cartes interactives.
@@ -187,8 +515,7 @@ section p {
   justify-content: center;
   font-size: clamp(3rem, 10vw, 12rem);
   font-weight: 700;
-  color: rgba(255,255,255,0.2); /* plus lumineux qu’avant */
-  text-shadow: 0 0 25px rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.08);
   pointer-events: none;
   user-select: none;
 }
@@ -226,53 +553,29 @@ section p {
   transform: scale(1.2);
 }
 
+/* Infobulle du slider */
+.slider-tooltip {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#year-slider-container:hover .slider-tooltip {
+  opacity: 1;
+}
 /* === NORMALISATION ===
    Élimine les marges navigateur par défaut pour garantir un plein écran réel.
 */
 html, body {
   margin: 0;
   padding: 0;
-}
-
-/* === ANCRES + FIL DYNAMIQUE ===
-   Ces ancres sont invisibles et servent à générer automatiquement les liaisons SVG.
-*/
-.fil-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-#fil-dynamique {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Chaque ancre est un point invisible dans la page */
-.ancre {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: transparent;
-  z-index: 5;
-}
-
-/* Mode debug (activer temporairement) */
-.ancre.debug {
-  background: rgba(255,255,255,0.5);
-  outline: 1px solid #fff;
-}
-
-/* Fil stylisé en pointillés blancs */
-.fil-ligne {
-  fill: none;
-  stroke: rgba(255,255,255,0.6);
-  stroke-width: 2;
-  stroke-dasharray: 6 6;
 }

@@ -1,4 +1,3 @@
-// videoScroll.js
 // ========================================
 // Gère la transition entre la vidéo d’intro plein écran et le header réduit
 // Déclenche automatiquement après la lecture de la vidéo
@@ -13,10 +12,9 @@ export function initVideoScroll() {
   main.classList.add("visible");
   if (!video || !main) return;
 
-  // Activer la boucle si tu veux qu’elle tourne en continu
   video.loop = true;
 
-  let triggered = false; // verrou pour éviter les doublons
+  let triggered = false; // verrou de trigger pour éviter les doublons
 
   function triggerScroll(auto = true) {
     if (triggered) return;
@@ -28,19 +26,15 @@ export function initVideoScroll() {
     intro?.classList.add("fini");
     body.style.overflowY = "visible";
 
-    // Si déclenché automatiquement → scroll fluide
-    if (auto) {
-      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-    }
   }
 
-  // --- 1️⃣ Déclenchement automatique après lecture vidéo ---
+  // --- Déclenchement automatique après lecture vidéo ---
   video.addEventListener("canplaythrough", () => {
     console.log("Vidéo chargée, lancement du compte à rebours...");
     setTimeout(() => triggerScroll(true), 14420);
   });
 
-  // --- 2️⃣ Sécurité : si la vidéo ne charge jamais ---
+  // --- Sécurité : si la vidéo ne charge jamais ---
   setTimeout(() => {
     if (!triggered) {
       console.warn("Timeout forcé — vidéo trop lente à charger.");
@@ -48,7 +42,7 @@ export function initVideoScroll() {
     }
   }, 14720);
 
-  // --- 3️⃣ Déclenchement manuel si l’utilisateur scrolle ---
+  // --- Déclenchement manuel si l’utilisateur scrolle ---
   window.addEventListener("scroll", () => {
     // Si l’utilisateur a commencé à scroller (plus de 80px)
     if (!triggered && window.scrollY > 80) {

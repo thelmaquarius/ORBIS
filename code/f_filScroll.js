@@ -1,108 +1,34 @@
-// f_filResponsive.js
-// =====================================================
-// Génération dynamique d’un fil SVG reliant les ancres
-// -----------------------------------------------------
-// - Chaque section “.bloc” possède .ancre-start et .ancre-end
-// - Ce script relie automatiquement la fin d’un bloc au suivant
-// - Le tracé est recalculé à chaque redimensionnement ou scroll
-// =====================================================
+// f_filScroll.js
+export function initFilScroll() {
+  const path = document.getElementById("chemin");
+  const segments = document.querySelectorAll(".segment");
+  if (!path || !segments.length) return;
 
-export function initFilResponsive() {
-  const svg = document.getElementById("fil-dynamique");
-  if (!svg) {
-    console.warn("⚠️ Aucun SVG trouvé avec l’ID #fil-dynamique");
-    return;
+  const len = path.getTotalLength();
+
+  function placeSegments() {
+    segments.forEach(seg => {
+      const p = parseFloat(seg.style.getPropertyValue("--pos"));
+      const pt = path.getPointAtLength(len * p);
+      seg.style.left = `${pt.x}px`;
+      seg.style.top = `${pt.y}px`;
+    });
   }
 
-  // =====================================================
-  // 🧩 Fonction principale : recalculer et redessiner les fils
-  // =====================================================
-  function majFil() {
-    const ancres = [...document.querySelectorAll(".ancre-start, .ancre-end")];
-    if (ancres.length === 0) return;
+  placeSegments();
+  window.addEventListener("resize", placeSegments);
 
-    // 1️⃣ Dimensions globales du document
-    const totalHeight = Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-      window.innerHeight
-    );
-
-    svg.setAttribute("width", window.innerWidth);
-    svg.setAttribute("height", totalHeight);
-    svg.setAttribute("viewBox", `0 0 ${window.innerWidth} ${totalHeight}`);
-    svg.innerHTML = ""; // Réinitialisation complète
-
-    // 2️⃣ Décalage vertical lié au header (vidéo)
-    const intro = document.getElementById("intro");
-    const headerOffset =
-      intro && intro.classList.contains("fini") ? intro.offsetHeight : 0;
-
-    // 3️⃣ Calcul des coordonnées absolues pour chaque ancre
-    const points = ancres.map((a) => {
-      const rect = a.getBoundingClientRect();
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      return {
-        x: rect.left + rect.width / 2,
-        y: rect.top + scrollTop + rect.height / 2 - headerOffset,
-        el: a,
-      };
-    });
-
-    // 4️⃣ Connexion des paires : end d’un bloc → start du suivant
-    const starts = [...document.querySelectorAll(".ancre-start")];
-    starts.forEach((start, i) => {
-      const end = start.closest(".bloc")?.querySelector(".ancre-end");
-      const nextStart = starts[i + 1];
-
-      // On relie la fin d’un bloc à son propre end, puis à celui du bloc suivant
-      if (end && nextStart) {
-        const p1 = points.find((p) => p.el === end);
-        const p2 = points.find((p) => p.el === nextStart);
-        if (p1 && p2) dessinerCourbe(p1, p2);
+  // Activation des segments selon le scroll
+  const sections = document.querySelectorAll("main section");
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const i = [...sections].indexOf(entry.target);
+        segments.forEach(s => s.classList.remove("active"));
+        if (segments[i]) segments[i].classList.add("active");
       }
     });
-  }
+  }, { threshold: 0.6 });
 
-  // =====================================================
-  // ✏️ Fonction pour dessiner une courbe entre deux points
-  // =====================================================
-  function dessinerCourbe(p1, p2) {
-    const dx = (p2.x - p1.x) * 0.3;
-    const dy = (p2.y - p1.y) * 0.3;
-
-    const pathData = `
-      M ${p1.x} ${p1.y}
-      C ${p1.x + dx} ${p1.y + dy},
-        ${p2.x - dx} ${p2.y - dy},
-        ${p2.x} ${p2.y}
-    `;
-
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", pathData.trim());
-    path.classList.add("fil-ligne"); // stylé via CSS
-    svg.appendChild(path);
-  }
-
-  // =====================================================
-  // 🔁 Rafraîchissement automatique
-  // =====================================================
-  const debouncedMajFil = debounce(majFil, 100);
-
-  // Dessin initial après petit délai (pour laisser le DOM se stabiliser)
-  setTimeout(majFil, 600);
-
-  window.addEventListener("resize", debouncedMajFil);
-  window.addEventListener("scroll", debouncedMajFil);
-}
-
-// =====================================================
-// ⏱️ Utilitaire : évite de recalculer trop souvent
-// =====================================================
-function debounce(fn, delay) {
-  let timeout;
-  return (...args) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => fn(...args), delay);
-  };
+  sections.forEach(s => obs.observe(s));
 }
