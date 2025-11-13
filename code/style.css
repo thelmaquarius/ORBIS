@@ -339,6 +339,16 @@ section {
   opacity: 0.8;
 }
 
+/*https://forum.alsacreations.com/topic-4-49279-1-ExposantenCSS.html*/ 
+.exposant {
+position: relative;
+bottom: 1px;
+font-size: .8em;
+line-height: .8em;
+vertical-align:super;
+text-decoration:none;
+}
+
 /* BOUTON PLAY/PAUSE */
 .bouton-lecture {
   appearance: none;

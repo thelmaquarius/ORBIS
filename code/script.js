@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const cartes = Array.from(document.querySelectorAll('.carte-langue'));
+  const cartes = Array.from(document.querySelectorAll('.carte-nouvelles-langues'));
   const audios = cartes.map(c => c.querySelector('audio'));
   const boutonsPlay = cartes.map(c => c.querySelector('.bouton-lecture'));
 

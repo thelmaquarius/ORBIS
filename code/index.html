@@ -11,9 +11,7 @@
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -58,10 +56,12 @@
           <li>Menu 4</li>
         </ul>
       </header> -->
-    <section class="section_1">
-      <div class="container_1">
-        <div class="texte_1">
-          <p class="partie_1">
+
+      <section class="section_a_propos">
+        <h1 class="titre_a_propos">Le monde à travers les mots</h1>
+        <div class="container_a_propos">
+        <div class="texte_a_propos">
+          <p class="partie_a_propos">
             <span class="texte-machine">
               Chaque langue raconte le lien intime entre un peuple et son environnement.
               Certaines résonnent encore dans le quotidien de millions de personnes,
@@ -73,8 +73,8 @@
           </p>
 
         </div>
-        <div class="images_1">
-          <img src="/media/hieroglyphes.png" alt="Image 1" class="img1">
+        <div class="images_a_propos">
+          <img src="/media/hieroglyphes.png" alt="Image 1" class="image_a_propos">
         </div>
       </div>
     </section>
@@ -82,8 +82,9 @@
     <!-- Section carte -->
     <section>
       <div id="map"></div>
+      </section>
 
-      <section class="section-langues">
+      <section class="section-nouvelles-langues">
         <div class="bloc-texte">
           <p>
             De nouvelles langues apparaissent encore aujourd’hui, même si c’est rare.
@@ -94,43 +95,43 @@
           </p>
         </div>
 
-        <div class="grille-langues">
+        <div class="grille-nouvelles-langues">
           <!-- Carte 1 -->
-          <article class="carte-langue">
+          <article class="carte-nouvelles-langues">
             <img src="/media/creole_haitien.jpg" alt="Créole haïtien" class="image-langue" />
             <h3 class="nom-langue">Créole haïtien</h3>
-            <p class="dates-langue">XVIIe–XIXe</p>
-            <p class="langue-description">description</p>
+            <p class="dates-langue">Apparu entre le XVIIe et XIXe siècle</p>
+            <p class="langue-description">Né du contact entre le français et plusieurs langues africaines pendant la colonisation à Saint-Domingue, il est aujourd’hui la langue principale d’Haïti. C’est un exemple typique de langue créole, avec une grammaire simplifiée et un vocabulaire majoritairement d’origine française.</p>
             <button class="bouton-lecture" aria-label="Lire l'extrait audio du Créole haïtien">▶︎ Lecture</button>
             <audio preload="none" src="/media/creole_haitien.mp3"></audio>
           </article>
 
           <!-- Carte 2 -->
-          <article class="carte-langue">
-            <img src="/media/metchif.jpg" alt="Métchif" class="image-langue" />
+          <article class="carte-nouvelles-langues">
+            <img src="/media/metchif.jpg" alt="Métchif" class="image-langue"/>
             <h3 class="nom-langue">Métchif</h3>
-            <p class="dates-langue">XVIIIe</p>
-            <p class="langue-description">description</p>
+            <p class="dates-langue">Apparu au XVIIIe siècle</p>
+            <p class="langue-description">Langue rare née du mélange entre le français et le cri (une langue autochtone d’Amérique du Nord), parlée par certains métisses du Canada et des États-Unis. Sa particularité est d’avoir un lexique français pour les noms et cri pour les verbes, reflétant parfaitement la double culture métisse.</p>
             <button class="bouton-lecture" aria-label="Lire l'extrait audio du Métchif">▶︎ Lecture</button>
-            <audio preload="none" src="/media/tout_pour_toi.mp3"></audio>
+            <audio preload="none" src="/media/metchif.mp3"></audio>
           </article>
 
           <!-- Carte 3 -->
-          <article class="carte-langue">
-            <img src="/media/afrikaans.jpg" alt="Afrikaans" class="image-langue" />
+          <article class="carte-nouvelles-langues">
+            <img src="/media/afrikaans.png" alt="Afrikaans" class="image-langue" />
             <h3 class="nom-langue">Afrikaans</h3>
-            <p class="dates-langue">XVIIe–XVIIIe</p>
-            <p class="langue-description">description</p>
+            <p class="dates-langue">Apparu entre le XVII<span class="exposant">e</span> et le XVIIIe sièle</p>
+            <p class="langue-description">Issu du néerlandais parlé par les colons en Afrique du Sud, il s’est transformé au contact des langues locales et d’autres influences européennes. Devenu langue à part entière, il est aujourd’hui parlé par plusieurs millions de personnes en Afrique du Sud et en Namibie.</p>
             <button class="bouton-lecture" aria-label="Lire l'extrait audio de l’Afrikaans">▶︎ Lecture</button>
             <audio preload="none" src="/media/afrikaans.mp3"></audio>
           </article>
         </div>
       </section>
 
-
       <section class="image-texte">
-        <div class="image-container">
-          <img src="/media/gens5.jpeg" alt="">
+        <div class="image-papouasie-container">
+           <img class="imgage1_papouasie" src="/media/papouasie.jpg" alt="">
+          <img class="imgage2_papouasie" src="/media/papouasie2.jpg" alt="">
           <p class="overlay-text">
             En Papouasie-Nouvelle-Guinée, on parle près de 840 langues différentes pour un seul pays,
             ce qui représente environ 12 % de toutes les langues du monde, pour à peine 9 millions d’habitants.
@@ -191,42 +192,7 @@
       </section>
 
 
-      <!-- <section>
-        <img src="/media/lost-valley.jpg" alt="">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
-          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
-          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
-          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
-          omnis! Dolores iure ut molestias harum similique delectus explicabo
-          culpa quidem. Commodi, accusamus repellendus.
-        </p>
-        <div class="separateur"></div>
-      </section>
-            <section>
-        <img src="/media/lost-valley.jpg" alt="">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
-          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
-          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
-          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
-          omnis! Dolores iure ut molestias harum similique delectus explicabo
-          culpa quidem. Commodi, accusamus repellendus.
-        </p>
-        <div class="separateur"></div>
-      </section>
-            <section>
-        <img src="/media/lost-valley.jpg" alt="">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
-          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
-          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
-          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
-          omnis! Dolores iure ut molestias harum similique delectus explicabo
-          culpa quidem. Commodi, accusamus repellendus.
-        </p>
-        <div class="separateur"></div>
-      </section>
+      <!--
             <section>
         <img src="/media/lost-valley.jpg" alt="">
         <p>
@@ -240,7 +206,6 @@
         <div class="separateur"></div>
       </section> -->
   </main>
-  
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
     </script>
