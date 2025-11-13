@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
 //MACHINE A ECRIRE
 
 document.addEventListener('DOMContentLoaded', () => {
