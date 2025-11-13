@@ -201,7 +201,6 @@ section {
   flex-shrink: 0;
 }
 
-/* Image + vidéo, parfaitement superposées dans le même cercle */
 .image_a_propos_img,
 .video_a_propos {
   position: absolute;
@@ -214,21 +213,17 @@ section {
   transition: opacity 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* vidéo cachée au départ */
 .video_a_propos {
   opacity: 0;
   pointer-events: none;
 }
 
-/* hover : on change juste la visibilité, pas la taille ni la position */
 .image_a_propos:hover .image_a_propos_img {
   opacity: 0;
-  box-shadow: 0 0 25px 10px #fecc7a8f;
 }
 
 .image_a_propos:hover .video_a_propos {
   opacity: 1;
-  box-shadow: 0 0 25px 10px #fecc7a8f;
 }
 
 /* Responsive pour écrans <= 768px */
@@ -252,8 +247,6 @@ section {
     margin-left: 0;
   }
 }
-
-
 
 /* NOUVELLES LANGUES */
 .section-nouvelles-langues {

@@ -63,6 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.querySelector('.video_a_propos').pause();
+
+document.querySelector('.image_a_propos').addEventListener('mouseenter', () => {
+  document.querySelector('.video_a_propos').play();
+});
+
+document.querySelector('.image_a_propos').addEventListener('mouseleave', () => {
+  document.querySelector('.video_a_propos').pause();
+  document.querySelector('.video_a_propos').currentTime = 0;
+});
+
 //MACHINE A ECRIRE
 
 document.addEventListener('DOMContentLoaded', () => {
