@@ -73,9 +73,11 @@
           </p>
 
         </div>
-        <div class="images_a_propos">
-          <img src="/media/hieroglyphes.png" alt="Image 1" class="image_a_propos">
-        </div>
+        <div class="image_a_propos">
+  <img src="/media/hieroglyphes.png" alt="" class="image_a_propos_img">
+  <video class="video_a_propos" src="/media/hieroglyphes.mp4" muted loop></video>
+</div>
+
       </div>
     </section>
 
@@ -98,7 +100,7 @@
         <div class="grille-nouvelles-langues">
           <!-- Carte 1 -->
           <article class="carte-nouvelles-langues">
-            <img src="/media/creole_haitien.jpg" alt="Créole haïtien" class="image-langue" />
+            <img src="/media/creole_haitien.jpg" alt="Créole haïtien" class="image-nouvelle-langue" />
             <h3 class="nom-langue">Créole haïtien</h3>
             <p class="dates-langue">Apparu entre le XVIIe et XIXe siècle</p>
             <p class="langue-description">Né du contact entre le français et plusieurs langues africaines pendant la colonisation à Saint-Domingue, il est aujourd’hui la langue principale d’Haïti. C’est un exemple typique de langue créole, avec une grammaire simplifiée et un vocabulaire majoritairement d’origine française.</p>
@@ -108,7 +110,7 @@
 
           <!-- Carte 2 -->
           <article class="carte-nouvelles-langues">
-            <img src="/media/metchif.jpg" alt="Métchif" class="image-langue"/>
+            <img src="/media/metchif.jpg" alt="Métchif" class="image-nouvelle-langue"/>
             <h3 class="nom-langue">Métchif</h3>
             <p class="dates-langue">Apparu au XVIIIe siècle</p>
             <p class="langue-description">Langue rare née du mélange entre le français et le cri (une langue autochtone d’Amérique du Nord), parlée par certains métisses du Canada et des États-Unis. Sa particularité est d’avoir un lexique français pour les noms et cri pour les verbes, reflétant parfaitement la double culture métisse.</p>
@@ -118,13 +120,14 @@
 
           <!-- Carte 3 -->
           <article class="carte-nouvelles-langues">
-            <img src="/media/afrikaans.png" alt="Afrikaans" class="image-langue" />
+            <img src="/media/afrikaans.png" alt="Afrikaans" class="image-nouvelle-langue" />
             <h3 class="nom-langue">Afrikaans</h3>
             <p class="dates-langue">Apparu entre le XVII<span class="exposant">e</span> et le XVIIIe sièle</p>
             <p class="langue-description">Issu du néerlandais parlé par les colons en Afrique du Sud, il s’est transformé au contact des langues locales et d’autres influences européennes. Devenu langue à part entière, il est aujourd’hui parlé par plusieurs millions de personnes en Afrique du Sud et en Namibie.</p>
             <button class="bouton-lecture" aria-label="Lire l'extrait audio de l’Afrikaans">▶︎ Lecture</button>
             <audio preload="none" src="/media/afrikaans.mp3"></audio>
           </article>
+
         </div>
       </section>
 
@@ -134,7 +137,7 @@
           <img class="imgage2_papouasie" src="/media/papouasie2.jpg" alt="">
           <p class="overlay-text">
             En Papouasie-Nouvelle-Guinée, on parle près de 840 langues différentes pour un seul pays,
-            ce qui représente environ 12 % de toutes les langues du monde, pour à peine 9 millions d’habitants.
+            ce qui représente environ 12 % de toutes les langues du monde, pour à peine 9 millions d’habitants ! Intéressant, non ?
           </p>
         </div>
       </section>
@@ -211,6 +214,19 @@
     </script>
   <script type="module" src="./main.js"></script>
   <script type="module" src="./script.js"></script>
+  <script>
+document.querySelector('.video_a_propos').pause();
+
+document.querySelector('.image_a_propos').addEventListener('mouseenter', () => {
+  document.querySelector('.video_a_propos').play();
+});
+
+document.querySelector('.image_a_propos').addEventListener('mouseleave', () => {
+  document.querySelector('.video_a_propos').pause();
+  document.querySelector('.video_a_propos').currentTime = 0;
+});
+</script>
+
 
 </body>
 

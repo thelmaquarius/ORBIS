@@ -134,14 +134,13 @@ header#intro {
 section {
   max-width: 1400px;
   position: relative;
-  margin: 0 auto;
- 
+  margin: 30px 50px;
   padding: clamp(4rem, 10vh, 8rem) 5vw;
   line-height: 1.7;
   color: #f0f0f0;
 }
 
-.container_1 {
+.container_a_propos {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,12 +148,12 @@ section {
   flex-wrap: nowrap; /* reste côte à côte sur grand écran */
 }
 
-.texte_1 {
+.texte_a_propos {
   flex: 3 1 500px;
   max-width: 60%;
 }
 
-.partie_1 {
+.partie_a_propos {
   padding: 1.5rem 2rem;
   border-radius: 15px;
   color: #f1f1f1;
@@ -185,92 +184,79 @@ section {
 }
 
 @keyframes blink { 50% { opacity: 0; } }
-
-/* Préfère moins d’animations si l’utilisateur a réduit les mouvements */
 @media (prefers-reduced-motion: reduce) {
   .texte-machine::after { animation: none; }
 }
 
-/* Conteneur image circulaire et responsive */
-.images_1 {
+/* Conteneur du cercle */
+.image_a_propos {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25vw; /* taille proportionnelle à la largeur de l’écran */
-  max-width: 300px; /* limite sur grand écran */
-  aspect-ratio: 1 / 1; /* garde la forme carrée */
+  width: 25vw;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
   margin-left: 80px;
   position: relative;
-  flex-shrink: 0; /* évite que l’image se compresse */
+  flex-shrink: 0;
 }
 
-/* Image ronde avec halo lumineux */
-.images_1 .img1 {
+/* Image + vidéo, parfaitement superposées dans le même cercle */
+.image_a_propos_img,
+.video_a_propos {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 25px 10px #ffac3f80;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 25px 10px #f7b25980;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
 }
 
-.images_1 .img1:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 35px 15px #cbaf51b3;
+/* vidéo cachée au départ */
+.video_a_propos {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* hover : on change juste la visibilité, pas la taille ni la position */
+.image_a_propos:hover .image_a_propos_img {
+  opacity: 0;
+  box-shadow: 0 0 25px 10px #fecc7a8f;
+}
+
+.image_a_propos:hover .video_a_propos {
+  opacity: 1;
+  box-shadow: 0 0 25px 10px #fecc7a8f;
 }
 
 /* Responsive pour écrans <= 768px */
 @media (max-width: 768px) {
-  .container_1 {
+  .container_a_propos {
     flex-direction: column;
     align-items: center;
     padding: 30px;
   }
 
-  .texte_1, .images_1 {
+  .texte_a_propos {
     max-width: 100%;
     margin-left: 0;
+    text-align: left;
   }
 
-  .images_1 {
-    width: 50vw; /* un peu plus grande sur petit écran */
+  .image_a_propos {
+    width: 50vw;
     max-width: 220px;
     margin-top: 20px;
+    margin-left: 0;
   }
 }
 
 
 
-.image-container {
-  position: relative;
-  display: inline-block;
-  display: flex;
-  justify-content: center; /* centre horizontalement */
-  align-items: center;  
-}
-
-.image-container img {
-  width: 80%;
-  height: auto;
-
-}
-
-.overlay-text {
-  position: absolute;
-  top: -50px; /* avant : 15px → plus haut */
-  right: 15px;
-  background: #FEF9EB;
-  color: black;
-  padding: 18px 25px; /* plus d’espace autour du texte */
-  max-width: 360px; /* rectangle un peu plus long */
-  font-size: 1rem;
-  line-height: 1.4;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  border: 2px solid black;
-}
-
 /* NOUVELLES LANGUES */
-.section-langues {
+.section-nouvelles-langues {
   padding: 50px;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
@@ -280,7 +266,7 @@ section {
 /* TEXTE INTRO */
 .bloc-texte {
   max-width: 900px;
-  margin: 0 auto 32px auto;
+  margin: 100px auto;
   font-size: 18px;
   line-height: 1.6;
   background: rgba(10, 20, 40, 0.6);
@@ -290,54 +276,61 @@ section {
 }
 
 /* GRILLE DES CARTES */
-.grille-langues {
+.grille-nouvelles-langues {
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: 40px; /* ↑ espace augmenté entre les cartes */
   align-items: stretch;
 }
 
-
 /* CHAQUE CARTE */
-.carte-langue {
+.carte-nouvelles-langues {
   background: rgba(12, 18, 34, 0.7);
-  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
   padding: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-align: left;
   transition: transform .25s ease, box-shadow .25s ease;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  font-size: 0.9rem;
 }
 
-.carte-langue:hover {
+.carte-nouvelles-langues:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.35);
 }
 
 /* IMAGE RECTANGULAIRE (sans halo) */
-.image-langue {
+.image-nouvelle-langue {
   width: 100%;
   height: 180px;
   object-fit: cover;
-
   margin-bottom: 12px;
 }
 
-/* NOM + DATES */
 .nom-langue {
   margin: 6px 0 2px 0;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 .dates-langue {
   margin: 0 0 12px 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   opacity: 0.8;
+  text-shadow: 0 0 15px #efb44799;
+  animation: clignoter 3s linear infinite;
+  color: #f6daae;
+  text-align: center;
 }
+
+@keyframes clignoter {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
 
 /*https://forum.alsacreations.com/topic-4-49279-1-ExposantenCSS.html*/ 
 .exposant {
@@ -352,8 +345,7 @@ text-decoration:none;
 /* BOUTON PLAY/PAUSE */
 .bouton-lecture {
   appearance: none;
-  border: 1px solid rgba(180, 200, 255, 0.5);
-  background: linear-gradient(180deg, rgba(30, 50, 100, 0.7), rgba(20, 35, 70, 0.7));
+  background: linear-gradient(180deg, #1d3162b3, #142346b3);
   color: #eaf0ff;
   padding: 10px 14px;
   border-radius: 999px;
@@ -361,36 +353,98 @@ text-decoration:none;
   font-size: 0.95rem;
   font-weight: 600;
   transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  border: none;
 }
 
 .bouton-lecture:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-  border-color: rgba(200, 220, 255, 0.8);
+  transform: translateY(-2px);
+box-shadow: 0 0 20px 1px #f7bb5288;
 }
 
-
 .bouton-lecture.en-lecture {
-  background: linear-gradient(180deg, rgba(60, 90, 160, 0.85), rgba(40, 65, 120, 0.85));
-  border-color: rgba(200, 220, 255, 0.9);
+   box-shadow: 0 0 20px 1px #f7bb5288;
 }
 
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .grille-langues {
+  .grille-nouvelles-langues {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
   }
 }
 @media (max-width: 600px) {
-  .section-langues {
+  .section-nouvelles-langues {
     padding: 28px 18px;
   }
-  .grille-langues {
+  .grille-nouvelles-langues {
     grid-template-columns: 1fr;
   }
 }
+
+/* PARTIE FUN FACT PAPOUASIE */
+
+.image-papouasie-container {
+  position: relative;
+  display: inline-block;
+  display: flex;
+  justify-content: center; /* centre horizontalement */
+  align-items: center;
+}
+
+.image-papouasie-container img {
+  width: 80%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.imgage1_papouasie {
+  animation: fadePap1 8s infinite;
+}
+
+.imgage2_papouasie {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: auto;
+  animation: fadePap2 8s infinite;
+}
+
+@keyframes fadePap1 {
+  0%, 40% { opacity: 1; }
+  50%, 90% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadePap2 {
+  0%, 40% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.overlay-text {
+  position: absolute;
+  top: -50px;
+  right: 15px;
+  background: #FEF9EB;
+  color: black;
+  padding: 18px 25px;
+  max-width: 360px;
+  font-size: 1rem;
+  line-height: 1.4;
+  box-shadow: 0 0 20px 2px #c4975989;  
+  border-radius: 4px;
+  animation: funfact 5s ease-in-out infinite;
+}
+
+@keyframes funfact {
+  0%, 100%   { transform: translateY(0px); }
+  40%        { transform: translateY(-20px); }
+  50%        { transform: translateY(-20px); }
+}
+
+/* PARTIE INFOS */
 
 .stats_infos {
   display: flex;
@@ -429,7 +483,7 @@ text-decoration:none;
 }
 
 .section_infos strong {
-  color: lab(88.35% 3.29 25.23); /* doré clair */
+  color: #f6daae;
   text-shadow: 0 0 15px #fecf7799;
   font-weight: 600;
 }
@@ -458,9 +512,6 @@ text-decoration:none;
     display: none;
   }
 }
-
-
-
 
 /* === FIL SERPENTANT ===
    SVG placé derrière les sections, suit la hauteur totale de la page.
