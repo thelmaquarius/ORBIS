@@ -12,6 +12,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
 
 </head>
 
@@ -58,7 +61,7 @@
       </header> -->
 
       <section class="section_a_propos">
-        <h1 class="titre_a_propos">Le monde à travers les mots</h1>
+        <h1 class="titre_a_propos">Quand les langues racontent le monde...</h1>
         <div class="container_a_propos">
         <div class="texte_a_propos">
           <p class="partie_a_propos">
@@ -102,7 +105,7 @@
           <article class="carte-nouvelles-langues">
             <img src="/media/creole_haitien.jpg" alt="Créole haïtien" class="image-nouvelle-langue" />
             <h3 class="nom-langue">Créole haïtien</h3>
-            <p class="dates-langue">Apparu entre le XVIIe et XIXe siècle</p>
+            <p class="dates-langue">Apparu entre le XVII<span class="exposant">e</span> et XVIII<span class="exposant">e</span> siècle</p>
             <p class="langue-description">Né du contact entre le français et plusieurs langues africaines pendant la colonisation à Saint-Domingue, il est aujourd’hui la langue principale d’Haïti. C’est un exemple typique de langue créole, avec une grammaire simplifiée et un vocabulaire majoritairement d’origine française.</p>
             <button class="bouton-lecture" aria-label="Lire l'extrait audio du Créole haïtien">▶︎ Lecture</button>
             <audio preload="none" src="/media/creole_haitien.mp3"></audio>
@@ -112,8 +115,8 @@
           <article class="carte-nouvelles-langues">
             <img src="/media/metchif.jpg" alt="Métchif" class="image-nouvelle-langue"/>
             <h3 class="nom-langue">Métchif</h3>
-            <p class="dates-langue">Apparu au XVIIIe siècle</p>
-            <p class="langue-description">Langue rare née du mélange entre le français et le cri (une langue autochtone d’Amérique du Nord), parlée par certains métisses du Canada et des États-Unis. Sa particularité est d’avoir un lexique français pour les noms et cri pour les verbes, reflétant parfaitement la double culture métisse.</p>
+            <p class="dates-langue">Apparu au XVIII<span class="exposant">e</span> siècle</p>
+            <p class="langue-description">Langue rare née du mélange entre le français et le cri (une langue autochtone d’Amérique du Nord), elle est parlée par certains métisses du Canada et des États-Unis. Sa particularité est d’avoir un lexique français pour les noms et cri pour les verbes, reflétant parfaitement la double culture métisse.</p>
             <button class="bouton-lecture" aria-label="Lire l'extrait audio du Métchif">▶︎ Lecture</button>
             <audio preload="none" src="/media/metchif.mp3"></audio>
           </article>
@@ -122,8 +125,8 @@
           <article class="carte-nouvelles-langues">
             <img src="/media/afrikaans.png" alt="Afrikaans" class="image-nouvelle-langue" />
             <h3 class="nom-langue">Afrikaans</h3>
-            <p class="dates-langue">Apparu entre le XVII<span class="exposant">e</span> et le XVIIIe sièle</p>
-            <p class="langue-description">Issu du néerlandais parlé par les colons en Afrique du Sud, il s’est transformé au contact des langues locales et d’autres influences européennes. Devenu langue à part entière, il est aujourd’hui parlé par plusieurs millions de personnes en Afrique du Sud et en Namibie.</p>
+            <p class="dates-langue">Apparu entre le XVII<span class="exposant">e</span> et le XVIII<span class="exposant">e</span> sièle</p>
+            <p class="langue-description">Issu du néerlandais parlé par les colons en Afrique du Sud, il s’est transformé au contact des langues locales et d’autres influences européennes. Devenu langue à part entière, l'Afrikaans est aujourd’hui parlé par plusieurs millions de personnes en Afrique du Sud et en Namibie.</p>
             <button class="bouton-lecture" aria-label="Lire l'extrait audio de l’Afrikaans">▶︎ Lecture</button>
             <audio preload="none" src="/media/afrikaans.mp3"></audio>
           </article>
@@ -131,13 +134,15 @@
         </div>
       </section>
 
+
+
       <section class="image-texte">
         <div class="image-papouasie-container">
            <img class="imgage1_papouasie" src="/media/papouasie.jpg" alt="">
           <img class="imgage2_papouasie" src="/media/papouasie2.jpg" alt="">
           <p class="overlay-text">
             En Papouasie-Nouvelle-Guinée, on parle près de 840 langues différentes pour un seul pays,
-            ce qui représente environ 12 % de toutes les langues du monde, pour à peine 9 millions d’habitants ! Intéressant, non ?
+            ce qui représente environ 12 % de toutes les langues du monde, pour à peine 9 millions d’habitants !
           </p>
         </div>
       </section>
@@ -164,35 +169,36 @@
             Partout dans le monde, des langues s’éteignent peu à peu. Certaines ne sont plus parlées que par une dizaine
             de personnes, d’autres n’existent plus que dans des archives.
           </p>
+            <p class="consigne_infos">À vous de jouer ! Cliquez sur les points d'interrogation pour deviner les chiffres.</p>
         </div>
 
-        <div class="stats_infos">
-          <div class="bloc_infos">
-            <p>
-              Sur les <strong>7 162</strong> langues vivantes recensées dans le monde, seule une minorité est réellement
-              stable, car beaucoup ne sont plus transmises aux jeunes générations.
-            </p>
-          </div>
+       <div class="stats_infos">
+  <div class="bloc_infos">
+    <p>
+      Sur les <strong class="nombre-cache">7 162</strong> langues vivantes recensées dans le monde, seule une minorité est réellement
+      stable, car beaucoup ne sont plus transmises aux jeunes générations.
+    </p>
+  </div>
 
-          <div class="separateurs_infos"></div>
+  <div class="separateurs_infos"></div>
 
-          <div class="bloc_infos">
-            <p>
-              Selon Ethnologue, plus de <strong>3000</strong> langues sont aujourd’hui menacées de disparition, ce qui
-              représente près de <strong>40 %</strong> des langues connues.
-            </p>
-          </div>
+  <div class="bloc_infos">
+    <p>
+      Selon Ethnologue, plus de <strong class="nombre-cache">3000</strong> langues sont aujourd’hui menacées de disparition, ce qui
+      représente près de <strong class="nombre-cache">40 %</strong> des langues connues.
+    </p>
+  </div>
 
-          <div class="separateurs_infos"></div>
+  <div class="separateurs_infos"></div>
 
-          <div class="bloc_infos">
-            <p>
-              Environ <strong>410</strong> langues ne sont plus parlées que par des personnes âgées, tandis que
-              <strong>278</strong> sont déjà en voie d’extinction rapide.
-            </p>
-          </div>
-        </div>
-      </section>
+  <div class="bloc_infos">
+    <p>
+      Environ <strong class="nombre-cache">410</strong> langues ne sont plus parlées que par des personnes âgées, tandis que
+      <strong class="nombre-cache">278</strong> sont déjà en voie d’extinction rapide.
+    </p>
+  </div>
+</div>
+</section>
 
 
       <!--
@@ -215,7 +221,11 @@
   <script type="module" src="./main.js"></script>
   <script type="module" src="./script.js"></script>
   <script>
-
+document.querySelectorAll('.nombre-cache').forEach((el) => {
+  el.addEventListener('click', () => {
+    el.classList.toggle('revele');
+  });
+});
 </script>
 
 
