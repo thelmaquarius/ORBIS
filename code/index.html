@@ -20,7 +20,7 @@
 <body>
   <!-- Intro vidéo -->
   <header id="intro">
-    <video class="background" autoplay loop muted playsinline preload="auto">
+    <video class="background x" autoplay loop muted playsinline preload="auto">
       <source src="/media/planet_loop.mp4" type="video/mp4" />
       Votre navigateur ne supporte pas la vidéo HTML5.
     </video>
@@ -43,11 +43,7 @@
     </div>
 
     <!-- === SEGMENTS DE PROGRESSION === -->
-    <div class="segment" style="--pos:0.06"></div>
-    <div class="segment" style="--pos:0.28"></div>
-    <div class="segment" style="--pos:0.50"></div>
-    <div class="segment" style="--pos:0.72"></div>
-    <div class="segment" style="--pos:0.93"></div>
+   <svg id="fil-svg"></svg>
 
     <!-- === Sections existantes === -->
     <!--       <header>
@@ -61,8 +57,8 @@
     <section class="section_1">
       <div class="container_1">
         <div class="texte_1">
-          <p class="partie_1">
-            <span class="texte-machine">
+          <p class="partie_1 x">
+            <span class="texte-machine ">
               Chaque langue raconte le lien intime entre un peuple et son environnement.
               Certaines résonnent encore dans le quotidien de millions de personnes,
               d’autres s’éteignent peu à peu. Elles renferment des savoirs, des histoires
