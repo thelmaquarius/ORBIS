@@ -1,10 +1,10 @@
 // map_create.js
 export function mapCreate() {
   fetch("/data/langages.json")
-    .then((response) => response.json())
-    .then((data) => {
+    .then((reponse) => reponse.json())
+    .then((donneesLangues) => {
       // === Création de la carte ===
-      const map = L.map("map", {
+      const carte = L.map("map", {
         center: [49.0, 15.0],
         zoom: 5,
         scrollWheelZoom: false,
@@ -14,86 +14,136 @@ export function mapCreate() {
         maxZoom: 19,
         attribution:
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }).addTo(map);
+      }).addTo(carte);
 
-      // === Calcul de distance (Haversine) ===
-      function distance(lat1, lon1, lat2, lon2) {
-        const R = 6371; // km
+      // === Fonction de calcul de distance (Haversine) ===
+      function calculerDistanceKm(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Rayon de la Terre en km
         const dLat = ((lat2 - lat1) * Math.PI) / 180;
         const dLon = ((lon2 - lon1) * Math.PI) / 180;
+
         const a =
           Math.sin(dLat / 2) ** 2 +
           Math.cos((lat1 * Math.PI) / 180) *
             Math.cos((lat2 * Math.PI) / 180) *
             Math.sin(dLon / 2) ** 2;
+
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c;
       }
 
-      // === Liste des langues déjà marquées (pour éviter doublons) ===
-      const languesAffichees = new Set();
+      // === Suivi des langues déjà affichées (éviter les doublons) ===
+      const languesDejaAffichees = new Set();
 
-      // === Gestion du clic ===
-      map.on("click", async function (e) {
-        const latMap = e.latlng.lat;
-        const lngMap = e.latlng.lng;
-        console.log("📍 Clic :", latMap, lngMap);
+      // === Icône pour les dialectes ===
+      const iconeDialecte = L.icon({
+        iconUrl: "../media/marker_dialect.png",
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40],
+      });
 
-        // === Trouver la langue la plus proche ===
-        let closest = null;
-        let minDist = Infinity;
+      // === Icône spéciale pour les langages ===
+      const iconeLangage = L.icon({
+        iconUrl: "../media/marker_language.png",
+        iconSize: [48, 48],
+        iconAnchor: [24, 48],
+        popupAnchor: [0, -48],
+      });
 
-        data.forEach((lang) => {
-          const dist = distance(latMap, lngMap, lang.Latitude, lang.Longitude);
-          if (dist < minDist) {
-            minDist = dist;
-            closest = lang;
+            // === Icône pour les dialectes ===
+      const iconeFamille = L.icon({
+        iconUrl: "../media/marker_family.png",
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40],
+      });
+
+      // === Gestion du clic sur la carte ===
+      carte.on("click", async function (evenementCarte) {
+        const latitudeCliquee = evenementCarte.latlng.lat;
+        const longitudeCliquee = evenementCarte.latlng.lng;
+
+        console.log("Clic :", latitudeCliquee, longitudeCliquee);
+
+        // === Recherche de la langue la plus proche ===
+        let langueLaPlusProche = null;
+        let distanceMinimale = Infinity;
+
+        donneesLangues.forEach((langue) => {
+          const dist = calculerDistanceKm(
+            latitudeCliquee,
+            longitudeCliquee,
+            langue.Latitude,
+            langue.Longitude
+          );
+
+          if (dist < distanceMinimale) {
+            distanceMinimale = dist;
+            langueLaPlusProche = langue;
           }
         });
 
-        if (!closest) return;
+        if (!langueLaPlusProche) return;
 
-        // === Si cette langue est déjà sur la carte, on ne fait rien ===
-        if (languesAffichees.has(closest.Name)) {
-          console.log(`⚠️ ${closest.Name} déjà affichée.`);
+        // === Si elle est déjà affichée → on ne fait rien ===
+        if (languesDejaAffichees.has(langueLaPlusProche.Name)) {
+          console.log(
+            `! ${langueLaPlusProche.Name} est déjà affichée sur la carte.`
+          );
           return;
         }
 
-        languesAffichees.add(closest.Name); // on la note comme affichée
+        languesDejaAffichees.add(langueLaPlusProche.Name);
 
-        // === Infos complémentaires ===
-        const year =
-          closest.First_Year_Of_Documentation &&
-          closest.First_Year_Of_Documentation !== ""
-            ? closest.First_Year_Of_Documentation
+        // === Récupération des informations ===
+        const anneeDocumentation =
+          langueLaPlusProche.First_Year_Of_Documentation &&
+          langueLaPlusProche.First_Year_Of_Documentation !== ""
+            ? langueLaPlusProche.First_Year_Of_Documentation
             : "Inconnue";
 
-        const level = closest.Level || "Non spécifié";
+        const typeLangue = langueLaPlusProche.Level || "Non spécifié";
 
-        // === Trouver le pays (API Nominatim) ===
-        let country = "Inconnu";
+        // === Récupération du pays via Nominatim ===
+        let paysOrigine = "Inconnu";
+
         try {
-          const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${closest.Latitude}&lon=${closest.Longitude}&format=json`
+          const reponsePays = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${langueLaPlusProche.Latitude}&lon=${langueLaPlusProche.Longitude}&format=json`
           );
-          const info = await res.json();
-          country = info.address?.country || "Inconnu";
-        } catch (err) {
-          console.warn("Erreur récupération du pays :", err);
+
+          const informationsNominatim = await reponsePays.json();
+          paysOrigine =
+            informationsNominatim.address?.country || "Inconnu";
+        } catch (erreur) {
+          console.warn("Erreur lors de la récupération du pays :", erreur);
         }
 
         console.log(
-          `✅ Langue trouvée : ${closest.Name} (${level}) - Découverte : ${year} - Foyer : ${country}`
+          `V Langue trouvée : ${langueLaPlusProche.Name} (${typeLangue}) — ` +
+            `Documentation : ${anneeDocumentation} — Pays : ${paysOrigine}`
         );
 
-        // === Ajouter le marqueur unique pour cette langue ===
-        L.marker([closest.Latitude, closest.Longitude])
-          .addTo(map)
+        // === Détermination de l'icône à utiliser ===
+        const iconeAUtiliser =
+          typeLangue && typeLangue.toLowerCase() === "language"
+            ? iconeLangage
+            : typeLangue && typeLangue.toLowerCase() === "family"
+            ? iconeFamille
+            : iconeDialecte;
+
+        // === Ajout du marqueur sur la carte ===
+        L.marker(
+          [langueLaPlusProche.Latitude, langueLaPlusProche.Longitude],
+          { icon: iconeAUtiliser }
+        )
+          .addTo(carte)
           .bindPopup(
-            `<b>${closest.Name}</b><br>
-             Type : ${level}<br>
-             Découverte : ${year}<br>
-             Foyer : ${country}`
+            `<b>${langueLaPlusProche.Name}</b><br>
+             Type : ${typeLangue}<br>
+             Première documentation : ${anneeDocumentation}<br>
+             Pays : ${paysOrigine}`
           )
           .openPopup();
       });
