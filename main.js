@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const titreElement = document.querySelector('.titre');
   if (titreElement) {
     const targetText = titreElement.innerHTML;
-    decodeText(targetText, 11000, 'titre');
+    decodeText(targetText, 5000, 'titre');
   }
 
 /*   var map = L.map('map').setView([51.505, -0.09], 13);
