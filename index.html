@@ -1,144 +1,211 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orbis</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orbis</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <body>
+    <!-- Intro vidéo -->
+    <header id="intro">
+      <video
+        class="background x"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src="/media/planet_loop.mp4" type="video/mp4" />
+        Votre navigateur ne supporte pas la vidéo HTML5.
+      </video>
+      <h1 class="titre" id="titre">ORBIS</h1>
+      <p>Voyage au coeur des langues et cultures disparues</p>
+    </header>
 
-</head>
-
-<body>
-  <!-- Intro vidéo -->
-  <header id="intro">
-    <video class="background" autoplay loop muted playsinline preload="auto">
-      <source src="/media/planet_loop.mp4" type="video/mp4" />
-      Votre navigateur ne supporte pas la vidéo HTML5.
-    </video>
-    <h1 class="titre" id="titre">ORBIS</h1>
-    <p>Voyage au coeur des langues et cultures disparues</p>
-  </header>
-
-  <!-- Contenu principal -->
-  <main id="main-content">
-    <!-- === FIL SERPENTANT === -->
-<!--     <div class="fil-container">
-      <svg class="fil" viewBox="0 0 800 5200">
-        <path id="chemin" d="M400 0
-           C 300 300, 500 600, 400 900
-           C 250 1300, 550 1600, 400 1900
-           C 200 2300, 600 2600, 400 3000
-           C 300 3400, 500 3700, 400 4100
-           C 250 4400, 600 4700, 400 5200" fill="none" stroke="white" stroke-width="2" stroke-dasharray="6 6" />
-      </svg>
-    </div> -->
-
-    <!-- === SEGMENTS DE PROGRESSION === -->
-    <svg id="fil-svg"></svg>
-
-    <!-- === Sections existantes === -->
-    <!--       <header>
-        <ul>
-          <li>Le Projet</li>
-          <li>Nos Sources</li>
-          <li>Qui sommes-nous ?</li>
-          <li>Menu 4</li>
-        </ul>
-      </header> -->
+    <!-- Contenu principal -->
+    <main id="main-content">
+      <!-- === SEGMENTS DE PROGRESSION === -->
+      <svg id="fil-svg"></svg>
 
       <section class="section_a_propos">
-        <h1 class="titre_a_propos">Quand les langues racontent le monde...</h1>
+        <h1 class="titre_a_propos x">Quand les langues racontent le monde...</h1>
         <div class="container_a_propos">
-        <div class="texte_a_propos">
-          <p class="partie_a_propos">
-            <span class="texte-machine">
-              Chaque langue raconte le lien intime entre un peuple et son environnement.
-              Certaines résonnent encore dans le quotidien de millions de personnes,
-              d’autres s’éteignent peu à peu. Elles renferment des savoirs, des histoires
-              et des expressions impossibles à traduire, témoignant d’une manière unique
-              de voir le monde. Ce projet les met en lumière à travers la photographie,
-              la cartographie et des témoignages audio.
-            </span>
-          </p>
+          <div class="texte_a_propos">
+            <p class="partie_a_propos">
+<!-- placeholder qui réserve la place -->
+              <span class="placeholder-texte">
+                Chaque langue raconte le lien intime entre un peuple et son
+                environnement. Certaines résonnent encore dans le quotidien de
+                millions de personnes, d’autres s’éteignent peu à peu. Elles
+                renferment des savoirs, des histoires et des expressions
+                impossibles à traduire, témoignant d’une manière unique de voir
+                le monde. Ce projet les met en lumière à travers la
+                photographie, la cartographie et des témoignages audio.
+              </span>
 
+              <span class="texte-machine texte-a-cloner">
+                Chaque langue raconte le lien intime entre un peuple et son
+                environnement. Certaines résonnent encore dans le quotidien de
+                millions de personnes, d’autres s’éteignent peu à peu. Elles
+                renferment des savoirs, des histoires et des expressions
+                impossibles à traduire, témoignant d’une manière unique de voir
+                le monde. Ce projet les met en lumière à travers la
+                photographie, la cartographie et des témoignages audio.
+              </span>
+            </p>
+          </div>
+          <div class="image_a_propos">
+            <img
+              src="/media/hieroglyphes.png"
+              alt=""
+              class="image_a_propos_img"
+            />
+            <video
+              class="video_a_propos"
+              src="/media/hieroglyphes.mp4"
+              muted
+              loop
+            ></video>
+          </div>
         </div>
-        <div class="image_a_propos">
-  <img src="/media/hieroglyphes.png" alt="" class="image_a_propos_img">
-  <video class="video_a_propos" src="/media/hieroglyphes.mp4" muted loop></video>
-</div>
+      </section>
 
-      </div>
-    </section>
-
-    <!-- Section carte -->
-    <section>
-      <div id="map"></div>
+      <!-- Section carte -->
+      <section>
+        <div id="map"class="x"></div>
       </section>
 
       <section class="section-nouvelles-langues">
-        <div class="bloc-texte">
+        <div class="bloc-texte x">
           <p>
-            De nouvelles langues apparaissent encore aujourd’hui, même si c’est rare.
-            Elles naissent souvent du mélange de plusieurs langues (comme les créoles)
-            ou de nouvelles formes de communication entre communautés, notamment en ligne.
-            Certaines apparaissent aussi dans des groupes isolés ou des jeunes générations
-            qui inventent leur propre manière de parler.
+            De nouvelles langues apparaissent encore aujourd’hui, même si c’est
+            rare. Elles naissent souvent du mélange de plusieurs langues (comme
+            les créoles) ou de nouvelles formes de communication entre
+            communautés, notamment en ligne. Certaines apparaissent aussi dans
+            des groupes isolés ou des jeunes générations qui inventent leur
+            propre manière de parler.
           </p>
         </div>
 
         <div class="grille-nouvelles-langues">
           <!-- Carte 1 -->
           <article class="carte-nouvelles-langues">
-            <img src="/media/creole_haitien.jpg" alt="Créole haïtien" class="image-nouvelle-langue" />
+            <img
+              src="/media/creole_haitien.jpg"
+              alt="Créole haïtien"
+              class="image-nouvelle-langue"
+            />
             <h3 class="nom-langue">Créole haïtien</h3>
-            <p class="dates-langue">Apparu entre le XVII<span class="exposant">e</span> et XVIII<span class="exposant">e</span> siècle</p>
-            <p class="langue-description">Né du contact entre le français et plusieurs langues africaines pendant la colonisation à Saint-Domingue, il est aujourd’hui la langue principale d’Haïti. C’est un exemple typique de langue créole, avec une grammaire simplifiée et un vocabulaire majoritairement d’origine française.</p>
-            <button class="bouton-lecture" aria-label="Lire l'extrait audio du Créole haïtien">▶︎ Lecture</button>
+            <p class="dates-langue">
+              Apparu entre le XVII<span class="exposant">e</span> et XVIII<span
+                class="exposant"
+                >e</span
+              >
+              siècle
+            </p>
+            <p class="langue-description">
+              Né du contact entre le français et plusieurs langues africaines
+              pendant la colonisation à Saint-Domingue, il est aujourd’hui la
+              langue principale d’Haïti. C’est un exemple typique de langue
+              créole, avec une grammaire simplifiée et un vocabulaire
+              majoritairement d’origine française.
+            </p>
+            <button
+              class="bouton-lecture"
+              aria-label="Lire l'extrait audio du Créole haïtien"
+            >
+              ▶︎ Lecture
+            </button>
             <audio preload="none" src="/media/creole_haitien.mp3"></audio>
           </article>
 
           <!-- Carte 2 -->
-          <article class="carte-nouvelles-langues">
-            <img src="/media/metchif.jpg" alt="Métchif" class="image-nouvelle-langue"/>
+          <article class="carte-nouvelles-langues x">
+            <img
+              src="/media/metchif.jpg"
+              alt="Métchif"
+              class="image-nouvelle-langue"
+            />
             <h3 class="nom-langue">Métchif</h3>
-            <p class="dates-langue">Apparu au XVIII<span class="exposant">e</span> siècle</p>
-            <p class="langue-description">Langue rare née du mélange entre le français et le cri (une langue autochtone d’Amérique du Nord), elle est parlée par certains métisses du Canada et des États-Unis. Sa particularité est d’avoir un lexique français pour les noms et cri pour les verbes, reflétant parfaitement la double culture métisse.</p>
-            <button class="bouton-lecture" aria-label="Lire l'extrait audio du Métchif">▶︎ Lecture</button>
+            <p class="dates-langue">
+              Apparu au XVIII<span class="exposant">e</span> siècle
+            </p>
+            <p class="langue-description">
+              Langue rare née du mélange entre le français et le cri (une langue
+              autochtone d’Amérique du Nord), elle est parlée par certains
+              métisses du Canada et des États-Unis. Sa particularité est d’avoir
+              un lexique français pour les noms et cri pour les verbes,
+              reflétant parfaitement la double culture métisse.
+            </p>
+            <button
+              class="bouton-lecture"
+              aria-label="Lire l'extrait audio du Métchif"
+            >
+              ▶︎ Lecture
+            </button>
             <audio preload="none" src="/media/metchif.mp3"></audio>
           </article>
 
           <!-- Carte 3 -->
           <article class="carte-nouvelles-langues">
-            <img src="/media/afrikaans.png" alt="Afrikaans" class="image-nouvelle-langue" />
+            <img
+              src="/media/afrikaans.png"
+              alt="Afrikaans"
+              class="image-nouvelle-langue"
+            />
             <h3 class="nom-langue">Afrikaans</h3>
-            <p class="dates-langue">Apparu entre le XVII<span class="exposant">e</span> et le XVIII<span class="exposant">e</span> sièle</p>
-            <p class="langue-description">Issu du néerlandais parlé par les colons en Afrique du Sud, il s’est transformé au contact des langues locales et d’autres influences européennes. Devenu langue à part entière, l'Afrikaans est aujourd’hui parlé par plusieurs millions de personnes en Afrique du Sud et en Namibie.</p>
-            <button class="bouton-lecture" aria-label="Lire l'extrait audio de l’Afrikaans">▶︎ Lecture</button>
+            <p class="dates-langue">
+              Apparu entre le XVII<span class="exposant">e</span> et le
+              XVIII<span class="exposant">e</span> sièle
+            </p>
+            <p class="langue-description">
+              Issu du néerlandais parlé par les colons en Afrique du Sud, il
+              s’est transformé au contact des langues locales et d’autres
+              influences européennes. Devenu langue à part entière, l'Afrikaans
+              est aujourd’hui parlé par plusieurs millions de personnes en
+              Afrique du Sud et en Namibie.
+            </p>
+            <button
+              class="bouton-lecture"
+              aria-label="Lire l'extrait audio de l’Afrikaans"
+            >
+              ▶︎ Lecture
+            </button>
             <audio preload="none" src="/media/afrikaans.mp3"></audio>
           </article>
-
         </div>
       </section>
 
-
-
       <section class="image-texte">
-        <div class="image-papouasie-container">
-           <img class="imgage1_papouasie" src="/media/papouasie.jpg" alt="">
-          <img class="imgage2_papouasie" src="/media/papouasie2.jpg" alt="">
+        <div class="image-papouasie-container x">
+          <img class="imgage1_papouasie" src="/media/papouasie.jpg" alt="" />
+          <img class="imgage2_papouasie" src="/media/papouasie2.jpg" alt="" />
           <p class="overlay-text">
-            En Papouasie-Nouvelle-Guinée, on parle près de 840 langues différentes pour un seul pays,
-            ce qui représente environ 12 % de toutes les langues du monde, pour à peine 9 millions d’habitants !
+            En Papouasie-Nouvelle-Guinée, on parle près de 840 langues
+            différentes pour un seul pays, ce qui représente environ 12 % de
+            toutes les langues du monde, pour à peine 9 millions d’habitants !
           </p>
         </div>
       </section>
@@ -149,82 +216,83 @@
           <canvas id="myChart"></canvas>
 
           <!-- overlay de l’année -->
-          <div id="year-display">1900</div>
+          <div id="year-display" class="x">1900</div>
         </div>
 
         <!-- Barre de sélection d’année -->
-        <div id="year-slider-container">
+        <div id="year-slider-container" class="">
           <div class="slider-tooltip">💡 Glissez pour changer l’année</div>
-          <input type="range" id="year-slider" min="1900" max="2025" step="1" value="1900" />
+          <input
+            type="range"
+            id="year-slider"
+            min="1900"
+            max="2025"
+            step="1"
+            value="1900"
+          />
         </div>
       </section>
 
       <section class="section_infos">
-        <div class="texte_infos">
+        <div class="texte_infos x">
           <p>
-            Partout dans le monde, des langues s’éteignent peu à peu. Certaines ne sont plus parlées que par une dizaine
-            de personnes, d’autres n’existent plus que dans des archives.
+            Partout dans le monde, des langues s’éteignent peu à peu. Certaines
+            ne sont plus parlées que par une dizaine de personnes, d’autres
+            n’existent plus que dans des archives.
           </p>
-            <p class="consigne_infos">À vous de jouer ! Cliquez sur les points d'interrogation pour deviner les chiffres.</p>
+          <p class="consigne_infos">
+            À vous de jouer ! Cliquez sur les points d'interrogation pour
+            deviner les chiffres.
+          </p>
         </div>
 
-       <div class="stats_infos">
-  <div class="bloc_infos">
-    <p>
-      Sur les <strong class="nombre-cache">7 162</strong> langues vivantes recensées dans le monde, seule une minorité est réellement
-      stable, car beaucoup ne sont plus transmises aux jeunes générations.
-    </p>
-  </div>
+        <div class="stats_infos">
+          <div class="bloc_infos">
+            <p>
+              Sur les <strong class="nombre-cache">7 162</strong> langues
+              vivantes recensées dans le monde, seule une minorité est
+              réellement stable, car beaucoup ne sont plus transmises aux jeunes
+              générations.
+            </p>
+          </div>
 
-  <div class="separateurs_infos"></div>
+          <div class="separateurs_infos"></div>
 
-  <div class="bloc_infos">
-    <p>
-      Selon Ethnologue, plus de <strong class="nombre-cache">3000</strong> langues sont aujourd’hui menacées de disparition, ce qui
-      représente près de <strong class="nombre-cache">40 %</strong> des langues connues.
-    </p>
-  </div>
+          <div class="bloc_infos">
+            <p>
+              Selon Ethnologue, plus de
+              <strong class="nombre-cache">3000</strong> langues sont
+              aujourd’hui menacées de disparition, ce qui représente près de
+              <strong class="nombre-cache">40 %</strong> des langues connues.
+            </p>
+          </div>
 
-  <div class="separateurs_infos"></div>
+          <div class="separateurs_infos"></div>
 
-  <div class="bloc_infos">
-    <p>
-      Environ <strong class="nombre-cache">410</strong> langues ne sont plus parlées que par des personnes âgées, tandis que
-      <strong class="nombre-cache">278</strong> sont déjà en voie d’extinction rapide.
-    </p>
-  </div>
-</div>
-</section>
-
-
-      <!--
-            <section>
-        <img src="/media/lost-valley.jpg" alt="">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut officia
-          accusantium deleniti quam cumque facilis qui nisi reprehenderit sunt
-          dignissimos quasi, veritatis explicabo placeat tempora hic distinctio
-          quas magni mollitia pariatur odio autem, excepturi repellendus eaque
-          omnis! Dolores iure ut molestias harum similique delectus explicabo
-          culpa quidem. Commodi, accusamus repellendus.
-        </p>
-        <div class="separateur"></div>
-      </section> -->
-  </main>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
+          <div class="bloc_infos">
+            <p>
+              Environ <strong class="nombre-cache">410</strong> langues ne sont
+              plus parlées que par des personnes âgées, tandis que
+              <strong class="nombre-cache">278</strong> sont déjà en voie
+              d’extinction rapide.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./script.js"></script>
+    <script>
+      document.querySelectorAll(".nombre-cache").forEach((el) => {
+        el.addEventListener("click", () => {
+          el.classList.toggle("revele");
+        });
+      });
     </script>
-  <script type="module" src="./main.js"></script>
-  <script type="module" src="./script.js"></script>
-  <script>
-document.querySelectorAll('.nombre-cache').forEach((el) => {
-  el.addEventListener('click', () => {
-    el.classList.toggle('revele');
-  });
-});
-</script>
-
-
-</body>
-
+  </body>
 </html>

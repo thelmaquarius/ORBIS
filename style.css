@@ -194,6 +194,31 @@ section {
   .texte-machine::after { animation: none; }
 }
 
+/* Placeholder*/
+.placeholder-texte {
+  visibility: hidden; 
+  pointer-events: none;
+  display: block;
+}
+
+.partie_a_propos {
+  position: relative;
+}
+
+.placeholder-texte {
+  visibility: hidden;
+  pointer-events: none;
+  display: block;
+}
+
+.texte-machine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+}
+
 /* CERCLE IMAGE */
 .image_a_propos {
   display: flex;
@@ -616,48 +641,22 @@ text-decoration:none;
   pointer-events: none;
 }
 
-
-/* === FIL SERPENTANT ===
-   SVG placé derrière les sections, suit la hauteur totale de la page.
-   pointer-events none : n’intercepte pas le scroll ni le clic.
-*/
-.fil-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(90vw, 800px);
-  height: 5200px;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.35;
-}
+/* FIL */
+#fil-svg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 0;
+      }
 
 svg.fil {
   width: 100%;
   height: 100%;
 }
 
-/* Segments du fil activés dynamiquement au scroll */
-/* .segment {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  background: #ffffff40;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: .4s, transform .4s, box-shadow .4s;
-  z-index: 0;
-} */
-/* .segment.active {
-  background: #fff;
-  transform: translate(-50%, -50%) scale(1.6);
-  box-shadow: 0 0 12px #fff;
-} */
-
-/* === GRAPH + MAP ===
-   overflow hidden empêche les débordements de cartes interactives.
-*/
 #map {
   height: clamp(300px, 40vh, 800px);
   border-radius: 10px;
