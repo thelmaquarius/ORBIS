@@ -128,7 +128,7 @@ header#intro {
   opacity: 1;
 }
 
-section {
+section:not(footer section) {
   max-width: 1400px;
   position: relative;
   margin: 50px;
@@ -741,4 +741,28 @@ svg.fil {
 html, body {
   margin: 0;
   padding: 0;
+}
+
+/*FOOTER*/
+
+.mentions-leg{
+max-width: 800px;
+  margin: auto;
+  margin-top: 10vh;
+}
+
+footer{
+  padding-top: 5vh;
+  background-color: #171717;
+}
+
+footer a{
+  color: #f6daae;
+}
+
+footer section{
+  margin: 40px;
+  padding: 10px;
+  border: rgb(146, 146, 120) 1px solid;
+  border-radius: 20px;
 }
