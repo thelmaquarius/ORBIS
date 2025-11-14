@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const cartes = Array.from(document.querySelectorAll('.carte-langue'));
+  const cartes = Array.from(document.querySelectorAll('.carte-nouvelles-langues'));
   const audios = cartes.map(c => c.querySelector('audio'));
   const boutonsPlay = cartes.map(c => c.querySelector('.bouton-lecture'));
 
@@ -61,6 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+});
+
+document.querySelector('.video_a_propos').pause();
+
+document.querySelector('.image_a_propos').addEventListener('mouseenter', () => {
+  document.querySelector('.video_a_propos').play();
+});
+
+document.querySelector('.image_a_propos').addEventListener('mouseleave', () => {
+  document.querySelector('.video_a_propos').pause();
+  document.querySelector('.video_a_propos').currentTime = 0;
 });
 
 //MACHINE A ECRIRE
