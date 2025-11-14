@@ -696,7 +696,7 @@ svg.fil {
   appearance: none;
   height: 6px;
   border-radius: 3px;
-  background: linear-gradient(90deg, #fc7d15, #e93d3d);
+  background: linear-gradient(90deg, RGB(209, 187, 150), #fff5aa);
   outline: none;
   cursor: pointer;
   transition: background 0.3s ease;
