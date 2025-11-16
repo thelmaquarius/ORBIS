@@ -768,3 +768,32 @@ footer section{
   border: rgb(146, 146, 120) 1px solid;
   border-radius: 20px;
 }
+
+#extinction-scroll {
+  margin-bottom: 5vh;
+    font-family: inherit;
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.lang-entry {
+    opacity: 1;
+}
+
+.lang-name {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.lang-year {
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+.lang-region {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-top: 2px;
+}

@@ -4,11 +4,16 @@ import { decodeText } from './f_decodeText.js';
 import { mapCreate } from './map_create.js';
 import { initScrollGraph } from './scrollGraph.js';
 import { initFilScroll } from './f_filScroll.js';
+import { initExtinctionScroll } from "./f_extinctionScroll.js";
 
 window.kunst_und_musik = false;
 
 window.addEventListener('DOMContentLoaded', () => {
-
+    initExtinctionScroll({
+        containerId: "extinction-scroll",
+        jsonPath: "./data/date_extinction.json",
+        interval: 4000
+    });
   mapCreate();
   initVideoScroll();
   initScrollGraph();
