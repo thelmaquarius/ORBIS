@@ -693,6 +693,7 @@ svg.fil {
 }
 
 #year-slider {
+  padding: 2px;
   width: 80%;
   appearance: none;
   height: 6px;
@@ -720,7 +721,7 @@ svg.fil {
 /* Infobulle du slider */
 .slider-tooltip {
   position: absolute;
-  top: -35px;
+  /* top: -35px; */
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0,0,0,0.7);
