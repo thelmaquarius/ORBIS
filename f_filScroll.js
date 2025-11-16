@@ -44,24 +44,36 @@
     }
 } */
 
+// f_filScroll.js
 export function initFilScroll() {
 
   // ==========================
-  // CONFIGURATION
+  // CONFIG
   // ==========================
-  let randomMode = 0;       // 1 = aléatoire ON, 0 = OFF
-  let randomStrength = 0;   // intensité (0 = pas d'aléatoire, 1 = normal, 2 = fort…)
+  let randomMode = 0;
+  let randomStrength = 0;
 
+  // 🔥 Interval d’auto-update pendant kunst_und_musik
+  let intervalID = null;
 
-  // =====================================================
-  // FONCTION PRINCIPALE : GÉNÉRER LA COURBE ENTRE LES BOÎTES
-  // =====================================================
+  function startAutoCurve() {
+    if (intervalID !== null) return;
+    intervalID = setInterval(generateCurve, 30); // ~30 FPS
+  }
+
+  function stopAutoCurve() {
+    clearInterval(intervalID);
+    intervalID = null;
+  }
+
+  // =======================================================
+  // Fonction principale — génération de la courbe
+  // =======================================================
   function generateCurve() {
     const svg = document.getElementById("fil-svg");
     if (!svg) return;
     svg.innerHTML = "";
 
-    // Points d'entrée/sortie autour des .x
     const rects = Array.from(document.querySelectorAll(".x")).map((el) => {
       const rect = el.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
@@ -72,9 +84,7 @@ export function initFilScroll() {
       };
     });
 
-    // =====================================================
-    // Catmull-Rom → Bézier (pour lisser)
-    // =====================================================
+    // === Catmull-Rom → Bézier ===
     function catmullRom2bezier(points) {
       let d = "";
       for (let i = 0; i < points.length - 1; i++) {
@@ -94,34 +104,23 @@ export function initFilScroll() {
       return d;
     }
 
-
-    // =====================================================
-    // Random contrôlé (ON/OFF + intensité)
-    // =====================================================
     function rand(amp) {
       if (!randomMode) return 0;
       return (Math.random() * amp * 2 - amp) * randomStrength;
     }
 
-
-    // =====================================================
-    // FABRICATION D’UN SEGMENT “CRAYON” ENTRE p1 & p2
-    // =====================================================
     function createStyledPath(p1, p2) {
       const points = [];
       const dy = p2.y - p1.y;
 
-      // ---- Segment droit de sortie ----
       const exitLen = 25;
       points.push({ x: p1.x, y: p1.y });
       points.push({ x: p1.x, y: p1.y + exitLen });
 
-      // ---- Organisation des motifs ----
       const usableDy = dy - exitLen * 2;
       const motifCount = usableDy > 300 ? 3 : usableDy > 180 ? 2 : 1;
       const motifHeight = usableDy / motifCount;
 
-      // ---- Motifs de base ----
       function motifS(h, amp) {
         return [
           { dx: amp,    dy: h * 0.33 },
@@ -141,11 +140,9 @@ export function initFilScroll() {
 
       const motifs = [motifS, motifLoop];
 
-      // ---- Point courant ----
       let curX = p1.x;
       let curY = p1.y + exitLen;
 
-      // ---- Appliquer les motifs ----
       for (let i = 0; i < motifCount; i++) {
         const motifFn = motifs[i % motifs.length];
         const baseAmp = 20 + rand(5);
@@ -154,8 +151,6 @@ export function initFilScroll() {
 
         seq.forEach((step, index) => {
           const t = index / seq.length;
-
-          // Random atténué (plus fort au milieu, très faible proche des boîtes)
           const fade = 1 - Math.abs(t - 0.5) * 1.8;
           const jitterX = rand(4) * fade;
           const jitterY = rand(2) * fade;
@@ -170,18 +165,12 @@ export function initFilScroll() {
         curY = points[points.length - 1].y;
       }
 
-      // ---- Segment droit d’entrée ----
       points.push({ x: p2.x, y: p2.y - exitLen });
       points.push({ x: p2.x, y: p2.y });
 
-      // ---- Conversion spline ----
       return "M " + p1.x + "," + p1.y + " " + catmullRom2bezier(points);
     }
 
-
-    // =====================================================
-    // GÉNÉRATION DE TOUS LES SEGMENTS
-    // =====================================================
     for (let i = 0; i < rects.length - 1; i++) {
       const p1 = rects[i].bottom;
       const p2 = rects[i + 1].top;
@@ -204,26 +193,21 @@ export function initFilScroll() {
     }
   }
 
-
-  // ==========================
-  // PREMIER TRAÇAGE
-  // ==========================
+  // Premier tracé
   generateCurve();
 
-
-  // ==========================
-  // RESPONSIVE
-  // ==========================
+  // Responsive
   window.addEventListener("resize", generateCurve);
   window.addEventListener("scroll", generateCurve);
 
-
-  // ==========================
-  // OPTION : exposer un toggle
-  // ==========================
+  // Exposition de l'API
   return {
     enableRandom()  { randomMode = 1; generateCurve(); },
     disableRandom() { randomMode = 0; generateCurve(); },
-    setStrength(v)  { randomStrength = v; generateCurve(); }
+    setStrength(v)  { randomStrength = v; generateCurve(); },
+
+    // 🔥 API pour le mode vidéo
+    startAutoCurve,
+    stopAutoCurve
   };
 }
