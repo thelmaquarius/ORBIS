@@ -3,7 +3,7 @@
 // ========================================
 export async function initScrollGraph() {
   // --- Chargement des données JSON ---
-  const res = await fetch("/data/evolution_20_langues_interpolated.json");
+  const res = await fetch("data/evolution_20_langues_interpolated.json");
   const data = await res.json();
 
   if (!Array.isArray(data) || data.length === 0) {
