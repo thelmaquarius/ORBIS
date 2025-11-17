@@ -11,7 +11,7 @@ window.kunst_und_musik = false;
 window.addEventListener('DOMContentLoaded', () => {
     initExtinctionScroll({
         containerId: "extinction-scroll",
-        jsonPath: "./data/date_extinction.json",
+        jsonPath: "data/date_extinction.json",
         interval: 4000
     });
   mapCreate();
