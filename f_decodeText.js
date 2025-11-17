@@ -1,6 +1,6 @@
 // decodeText.js
 export async function decodeText(targetText, totalDuration, elementId) {
-  const res = await fetch('/data/alphabets_rotated.json');
+  const res = await fetch('data/alphabets_rotated.json');
   const alphabets = await res.json();
 
   if (!alphabets.length) {

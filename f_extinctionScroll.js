@@ -2,7 +2,7 @@
 
 export function initExtinctionScroll({
     containerId = "extinction-scroll",
-    jsonPath = "./date_extinction.json",
+    jsonPath = "date_extinction.json",
     interval = 3000 // temps entre chaque langue (ms)
 } = {}) {
 

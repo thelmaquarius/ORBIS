@@ -296,7 +296,18 @@
       <h1 class="description-extinction">Un oeil sur les langues disparues...</h1>
 <div id="extinction-scroll"></div>
 <footer class="footer-orbis">
-  <div class="mentions-leg">
+  <!-- petit footer visible en permanence -->
+  <div class="footer-mini">
+    <p class="footer-mini-text">
+      Site réalisé dans le cadre d’un projet pédagogique – Université Gustave Eiffel.
+    </p>
+    <button class="footer-mentions-btn" id="footer-mentions-btn" aria-expanded="false">
+      Mentions légales
+    </button>
+  </div>
+
+  <!-- bloc complet des mentions, caché par défaut -->
+  <div class="mentions-leg" id="mentions-leg" aria-hidden="true">
     <p class="mentions-leg-eyebrow">
       Projet étudiant — Université Gustave Eiffel
     </p>
@@ -424,10 +435,6 @@
         </ul>
       </section>
     </div>
-
-    <p class="mentions-leg-bottom">
-      Site réalisé dans le cadre d’un projet pédagogique – Université Gustave Eiffel.
-    </p>
   </div>
 </footer>
 
