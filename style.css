@@ -529,6 +529,10 @@ text-decoration:none;
   max-width: none;
 }
 
+.intro_texte_infos {
+  font-size: 1.1rem;
+}
+
 .texte_infos {
   margin: 50px 0;
 }
@@ -745,32 +749,157 @@ html, body {
   padding: 0;
 }
 
-/*FOOTER*/
+/* FOOTER MENTIONS LÉGALES */
 
-.mentions-leg{
-max-width: 800px;
-  margin: auto;
-  margin-top: 10vh;
+.footer-orbis {
+  padding: 6vh 0 4vh;
+  background: #050716;
+  border-top: 3px solid #f6daae59;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
 }
 
-footer{
-  padding-top: 5vh;
-  background-color: #171717;
+.mentions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 50px;
+
+  max-width: 800px;  /* largeur max des rectangles sur grand écran */
+  width: 100%;       /* prend toute la largeur dispo */
+  margin-left: auto;
+  margin-right: auto; /* centre le bloc */
 }
 
-footer a{
+.mentions-leg {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+  color: #f5f5f5;
+}
+
+.mentions-leg-eyebrow {
+  font-family: "Zain", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0 0 0.8rem;
+}
+
+.mentions-leg h2 {
+  font-family: "Zain", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  text-align: left;
+  margin: 0 0 0.8rem;
+  position: relative;
+}
+
+.mentions-leg h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  margin-top: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f6daae, #f7b259);
+  box-shadow: 0 0 12px rgba(247, 178, 89, 0.6);
+}
+
+.mentions-leg-theme {
+  max-width: 800px;
+  margin: 3rem auto 3rem;
+  padding: 20px 28px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  background: #21428356;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+  display: block;
+  text-align: left;
+}
+
+/* cartes */
+.mentions-card {
+  background: #101c3b58;
+  border-radius: 18px;
+  padding: 18px 22px 20px;
+  border: 1.5px solid #f6daae59;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.mentions-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+  border-color: rgba(246, 218, 174, 0.6);
+}
+
+.footer-orbis h3 {
+  font-family: "Zain", sans-serif;
+  font-size: 1.25rem;
+  margin: 0 0 0.7rem;
+}
+
+.footer-orbis h4 {
+  font-family: "Zain", sans-serif;
+  font-size: 1.05rem;
+  margin: 1.1rem 0 0.4rem;
   color: #f6daae;
 }
 
-footer section{
-  margin: 40px;
-  padding: 10px;
-  border: rgb(146, 146, 120) 1px solid;
-  border-radius: 20px;
+.footer-orbis li {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0.25rem 0;
+}
+
+.footer-orbis ul {
+  margin: 0.4rem 0 0.2rem;
+  padding-left: 1.3rem;
+}
+
+.footer-orbis li::marker {
+  color: #f6daae;
+}
+
+.footer-orbis a {
+  color: #f6daae;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(246, 218, 174, 0.6);
+}
+
+.footer-orbis a:hover {
+  border-bottom-style: solid;
+}
+
+.mentions-leg-bottom {
+  margin-top: 2.4rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .mentions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mentions-leg-bottom {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .mentions-leg {
+    padding-inline: 6vw;
+  }
 }
 
 #extinction-scroll {
-  margin-bottom: 5vh;
+  margin-bottom: 12vh;
     font-family: inherit;
     text-align: center;
     color: white;
@@ -785,6 +914,7 @@ footer section{
 .lang-name {
     font-size: 1.6rem;
     font-weight: 600;
+     text-shadow: 0 0 5px #fecf7799;
 }
 
 .lang-year {
@@ -796,4 +926,11 @@ footer section{
     font-size: 0.9rem;
     opacity: 0.6;
     margin-top: 2px;
+}
+
+.description-extinction {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-weight: 600;
 }
