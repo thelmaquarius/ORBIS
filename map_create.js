@@ -1,6 +1,6 @@
 // map_create.js
 export function mapCreate() {
-  fetch("/data/langages.json")
+  fetch("data/langages.json")
     .then((reponse) => reponse.json())
     .then((donneesLangues) => {
       // === Création de la carte ===
@@ -37,7 +37,7 @@ export function mapCreate() {
 
       // === Icône pour les dialectes ===
       const iconeDialecte = L.icon({
-        iconUrl: "../media/marker_dialect.png",
+        iconUrl: "media/marker_dialect.png",
         iconSize: [40, 40],
         iconAnchor: [20, 40],
         popupAnchor: [0, -40],
@@ -45,7 +45,7 @@ export function mapCreate() {
 
       // === Icône spéciale pour les langages ===
       const iconeLangage = L.icon({
-        iconUrl: "../media/marker_language.png",
+        iconUrl: "media/marker_language.png",
         iconSize: [48, 48],
         iconAnchor: [24, 48],
         popupAnchor: [0, -48],
@@ -53,7 +53,7 @@ export function mapCreate() {
 
             // === Icône pour les dialectes ===
       const iconeFamille = L.icon({
-        iconUrl: "../media/marker_family.png",
+        iconUrl: "media/marker_family.png",
         iconSize: [40, 40],
         iconAnchor: [20, 40],
         popupAnchor: [0, -40],

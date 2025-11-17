@@ -37,7 +37,7 @@
         playsinline
         preload="auto"
       >
-        <source src="/media/planet_loop.mp4" type="video/mp4" />
+        <source src="media/planet_loop.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la vidéo HTML5.
       </video>
       <h1 class="titre" id="titre">ORBIS</h1>
@@ -78,13 +78,13 @@
           </div>
           <div class="image_a_propos">
             <img
-              src="/media/hieroglyphes.png"
+              src="media/hieroglyphes.png"
               alt=""
               class="image_a_propos_img"
             />
             <video
               class="video_a_propos"
-              src="/media/hieroglyphes.mp4"
+              src="media/hieroglyphes.mp4"
               muted
               loop
             ></video>
@@ -94,10 +94,10 @@
 
       <!-- Section carte -->
       <section>
+        <p class="consigne_infos">
+  À vous de jouer ! Cliquez sur la carte pour découvrir les différents langages du monde.
+</p>
         <div id="map"class="x"></div>
-                  <p class="consigne_infos">
-            À vous de jouer ! Cliquez sur la carte pour découvrir les différents langages du monde.
-          </p>
       </section>
 
       <section class="section-nouvelles-langues">
@@ -116,7 +116,7 @@
           <!-- Carte 1 -->
           <article class="carte-nouvelles-langues">
             <img
-              src="/media/creole_haitien.jpg"
+              src="media/creole_haitien.jpg"
               alt="Créole haïtien"
               class="image-nouvelle-langue"
             />
@@ -141,13 +141,13 @@
             >
               ▶︎ Lecture
             </button>
-            <audio preload="none" src="/media/creole_haitien.mp3"></audio>
+            <audio preload="none" src="media/creole_haitien.mp3"></audio>
           </article>
 
           <!-- Carte 2 -->
           <article class="carte-nouvelles-langues x">
             <img
-              src="/media/metchif.jpg"
+              src="media/metchif.jpg"
               alt="Métchif"
               class="image-nouvelle-langue"
             />
@@ -168,13 +168,13 @@
             >
               ▶︎ Lecture
             </button>
-            <audio preload="none" src="/media/metchif.mp3"></audio>
+            <audio preload="none" src="media/metchif.mp3"></audio>
           </article>
 
           <!-- Carte 3 -->
           <article class="carte-nouvelles-langues">
             <img
-              src="/media/afrikaans.png"
+              src="media/afrikaans.png"
               alt="Afrikaans"
               class="image-nouvelle-langue"
             />
@@ -196,15 +196,15 @@
             >
               ▶︎ Lecture
             </button>
-            <audio preload="none" src="/media/afrikaans.mp3"></audio>
+            <audio preload="none" src="media/afrikaans.mp3"></audio>
           </article>
         </div>
       </section>
 
       <section class="image-texte">
         <div class="image-papouasie-container x">
-          <img class="imgage1_papouasie" src="/media/papouasie.jpg" alt="" />
-          <img class="imgage2_papouasie" src="/media/papouasie2.jpg" alt="" />
+          <img class="imgage1_papouasie" src="media/papouasie.jpg" alt="" />
+          <img class="imgage2_papouasie" src="media/papouasie2.jpg" alt="" />
           <p class="overlay-text">
             En Papouasie-Nouvelle-Guinée, on parle près de 840 langues
             différentes pour un seul pays, ce qui représente environ 12 % de
@@ -508,8 +508,8 @@ Langues les plus parlées de nos jours ; Langues nouvelles et disparues ;
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
-    <script type="module" src="./main.js"></script>
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="script.js"></script>
     <script>
       document.querySelectorAll(".nombre-cache").forEach((el) => {
         el.addEventListener("click", () => {
