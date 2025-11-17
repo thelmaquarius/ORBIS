@@ -19,28 +19,29 @@ export async function initScrollGraph() {
 
   const labels = data.map((d) => d.label);
 
-const colors = [
-  "#8a5524",
-  "#9e632a",
-  "#b0702f",
-  "#c27d35",
-  "#cf8740",
-  "#d88f48",
-  "#e09853",
-  "#eaa260",
-  "#f2ad6c",
-  "#f7b776",
-  "#f6c088",
-  "#f6ca96",
-  "#f6d4a4",
-  "#f6ddaf",
-  "#f6e6bd",
-  "#a83822",
-  "#c24921",
-  "#d65823",
-  "#e26727",
-  "#f07b2f"
-];
+  const colors = [
+    "#8a5524",
+    "#9e632a",
+    "#b0702f",
+    "#c27d35",
+    "#cf8740",
+    "#d88f48",
+    "#e09853",
+    "#eaa260",
+    "#f2ad6c",
+    "#f7b776",
+    "#f6c088",
+    "#f6ca96",
+    "#f6d4a4",
+    "#f6ddaf",
+    "#f6e6bd",
+    "#a83822",
+    "#c24921",
+    "#d65823",
+    "#e26727",
+    "#f07b2f"
+  ];
+
   // --- Initialisation du graphique ---
   const ctx = document.getElementById("myChart").getContext("2d");
   const yearDisplay = document.getElementById("year-display");
@@ -106,11 +107,23 @@ const colors = [
   slider.step = 1;
   slider.value = initialYear;
 
+  // Accessibilité du slider
+  slider.setAttribute("aria-valuemin", slider.min);
+  slider.setAttribute("aria-valuemax", slider.max);
+  slider.setAttribute("aria-valuenow", initialYear);
+  slider.setAttribute("aria-valuetext", `Année ${initialYear}`);
+
+  yearDisplay.textContent = initialYear;
+
   slider.addEventListener("input", (e) => {
     const currentYear = parseInt(e.target.value);
     myChart.data.datasets[0].data = data.map((d) => d[currentYear]);
     myChart.data.datasets[0].label = `Population (${currentYear})`;
     yearDisplay.textContent = currentYear;
+
+    slider.setAttribute("aria-valuenow", currentYear);
+    slider.setAttribute("aria-valuetext", `Année ${currentYear}`);
+
     myChart.update();
   });
 }

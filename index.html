@@ -38,6 +38,7 @@
         muted
         playsinline
         preload="auto"
+        aria-hidden="true"
       >
         <source src="media/planet_loop.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la vidéo HTML5.
@@ -49,7 +50,7 @@
     <!-- Contenu principal -->
     <main id="main-content">
       <!-- === SEGMENTS DE PROGRESSION === -->
-      <svg id="fil-svg"></svg>
+      <svg id="fil-svg" aria-hidden="true"></svg>
 
       <section class="section_a_propos">
         <h1 class="titre_a_propos x">Quand les langues racontent le monde...</h1>
@@ -99,7 +100,7 @@
         <p class="consigne_infos">
   À vous de jouer ! Cliquez n'importe où sur la carte pour découvrir les différents langages du monde.
 </p>
-        <div id="map"class="x"></div>
+        <div id="map"class="x"  aria-label="Carte interactive des langues du monde"></div>
       </section>
 
       <section class="section-nouvelles-langues">
@@ -120,7 +121,7 @@
             <img
               src="media/creole_haitien.jpg"
               alt="Créole haïtien"
-              class="image-nouvelle-langue"
+              class="image-nouvelle-langue" loading="lazy"
             />
             <h3 class="nom-langue">Créole haïtien</h3>
             <p class="dates-langue">
@@ -151,7 +152,7 @@
             <img
               src="media/metchif.jpg"
               alt="Métchif"
-              class="image-nouvelle-langue"
+              class="image-nouvelle-langue" loading="lazy"
             />
             <h3 class="nom-langue">Métchif</h3>
             <p class="dates-langue">
@@ -178,7 +179,7 @@
             <img
               src="media/afrikaans.png"
               alt="Afrikaans"
-              class="image-nouvelle-langue"
+              class="image-nouvelle-langue" loading="lazy"
             />
             <h3 class="nom-langue">Afrikaans</h3>
             <p class="dates-langue">
@@ -205,8 +206,8 @@
 
       <section class="image-texte">
         <div class="image-papouasie-container x">
-          <img class="imgage1_papouasie" src="media/papouasie.jpg" alt="" />
-          <img class="imgage2_papouasie" src="media/papouasie2.jpg" alt="" />
+          <img class="imgage1_papouasie" src="media/papouasie.jpg" alt="" loading="lazy"/>
+          <img class="imgage2_papouasie" src="media/papouasie2.jpg" alt="" loading="lazy" />
           <p class="overlay-text">
             En Papouasie-Nouvelle-Guinée, on parle près de 840 langues
             différentes pour un seul pays, ce qui représente environ 12 % de
@@ -226,21 +227,27 @@
           <canvas id="myChart"></canvas>
 
           <!-- overlay de l’année -->
-          <div id="year-display" class="x">1900</div>
+          <div id="year-display" class="x" aria-live="polite" aria-atomic="true">1900</div>
+
         </div>
         
         <!-- Barre de sélection d’année -->
         <div id="year-slider-container" class="">
-          <div class="slider-tooltip">💡 Glissez pour changer l’année</div>
-          <input
-            type="range"
-            id="year-slider"
-            min="1900"
-            max="2025"
-            step="1"
-            value="1900"
-          />
-        </div>
+        <div class="slider-tooltip">💡 Glissez pour changer l’année</div>
+
+        <!-- label caché pour les lecteurs d’écran -->
+        <label for="year-slider" class="sr-only">Sélectionner une année</label>
+
+        <input
+          type="range"
+          id="year-slider"
+          min="1900"
+          max="2025"
+          step="1"
+          value="1900"
+        />
+      </div>
+
 
         
         <div class="bloc-texte">
@@ -298,12 +305,6 @@
       <h1 class="description-extinction">Un oeil sur les langues disparues...</h1>
 <div id="extinction-scroll"></div>
 <footer class="footer-orbis">
-  <!-- petit footer visible en permanence -->
-  <div class="footer-mini">
-    <p class="footer-mini-text">
-      Site réalisé dans le cadre d’un projet pédagogique – Université Gustave Eiffel.
-    </p>
-  </div>
 
   <!-- bloc complet des mentions, caché par défaut -->
   <div class="mentions-leg" id="mentions-leg" aria-hidden="true">
@@ -326,7 +327,8 @@
       <section id="editeur" class="mentions-card">
         <h3>1. Éditeur du site</h3>
 
-        <p><strong>Raison sociale :</strong> Gilles Roussel, président de l’Université Gustave Eiffel</p>
+        <p><strong>Raison sociale : </strong>Université Gustave Eiffel</p>
+        <p><strong>Président de l’Université Gustave Eiffel : </strong> Gilles Roussel</p>
         <p><strong>Forme juridique :</strong> Établissement public national à caractère scientifique, culturel et professionnel (EPSCP)</p>
         <p><strong>SIRET :</strong> 130 026 123 00013</p>
         <p><strong>Code APE :</strong> 85.42Z</p>
@@ -425,7 +427,7 @@
         <ul>
           <li>Markers Leaflet : Raphaël MADORÉ</li>
           <li>Vidéo d’accueil : <em>Earth's Rotation | 4K Relaxing Screensaver</em>, chaîne YouTube « Josu Relax »</li>
-          <li>Photo femme haïtienne : image libre de droit (Decibel Danse) —</li>
+          <li>Photo femme haïtienne : image libre de droit (Decibel Danse)</li>
           <li>Photo homme Canadien : Marie-Laure Josselin / Radio Gosselin —
             <a href="https://ici.radio-canada.ca/espaces-autochtones/2037876/huit-autochtones-nommes-ordre-canada" target="_blank">Source Radio-Canana</a></li>
           <li>Photo femmes Sud-Africaines : Photographe inconnu —
@@ -439,9 +441,12 @@
       </section>
     </div>
   </div>
+  <div class="footer-mini">
+    <p class="footer-mini-text">
+      Site réalisé dans le cadre d’un projet pédagogique – Université Gustave Eiffel.
+    </p>
+  </div>
 </footer>
-
-</section>
     </main>
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

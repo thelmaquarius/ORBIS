@@ -722,6 +722,19 @@ svg.fil {
   transform: scale(1.2);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
 /* Infobulle du slider */
 .slider-tooltip {
   position: absolute;
@@ -752,7 +765,7 @@ html, body {
 /* FOOTER MENTIONS LÉGALES */
 
 .footer-orbis {
-  padding: 6vh 0 4vh;
+  padding: 4vh 0 2vh;
   background: #050716;
   border-top: 3px solid #f6daae59;
   box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
@@ -882,6 +895,48 @@ html, body {
   text-align: right;
 }
 
+.mentions-leg[aria-hidden="true"] .mentions-leg-theme,
+.mentions-leg[aria-hidden="true"] .mentions-list {
+  display: none;
+}
+
+.mentions-leg[aria-hidden="true"] {
+  margin-top: 1.5rem;
+}
+
+.btn-mentions {
+  appearance: none;
+  background: #FEF9EB;
+  color: black;
+  padding: 10px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-family: "Zain", sans-serif;
+  font-weight: 600;
+  border: none;
+  margin: 2rem 0 1rem;
+  display: inline-block;
+  transition: transform 0.15s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 0 15px 2px #c4975989;
+}
+
+.btn-mentions:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px 3px #c4975989;
+  background: #fff2cf; /* même hover que les "?" */
+}
+
+.btn-mentions:active {
+  transform: translateY(0);
+}
+
+.footer-mini-text {
+  text-align: center;
+  align-items: center;
+}
+
+
 @media (max-width: 900px) {
   .mentions-grid {
     grid-template-columns: 1fr;
@@ -933,4 +988,13 @@ html, body {
   font-size: 1.8rem;
   margin-bottom: 30px;
   font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
