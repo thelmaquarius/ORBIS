@@ -12,7 +12,6 @@ body {
   min-width: 300px;
 }
 
-/* Chargement explicite de la police principale du titre */
 @font-face {
   font-family: "Français";
   src: url("../fonts/Francais.otf") format("opentype");
@@ -26,16 +25,16 @@ body {
 header#intro {
   position: relative;
   width: 100%;
-  height: 100vh;                /* occupe tout l’écran à l’ouverture */
+  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;      /* centrage vertical du titre et sous-titre */
+  justify-content: center;
   text-align: center;
-  transition: all 1.2s ease-in-out; /* anime la réduction */
+  transition: all 1.2s ease-in-out;
   margin: 0;
-  padding: 0;                   /* supprime les marges par défaut du header */
+  padding: 0;
 }
 
 /* Vidéo en plein écran, fixée, sans marges ni bords visibles */
@@ -46,7 +45,7 @@ header#intro {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: -2;                  /* reste derrière le texte et le contenu */
+  z-index: -2;
   opacity: 0.7;
   transition: all 1.2s ease-in-out;
 }
@@ -84,12 +83,11 @@ header#intro {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* recentre verticalement */
+  justify-content: center;
   height: 30vh;
-  overflow: visible; /* évite les coupures */
+  overflow: visible;
 }
 
-/* Vidéo réduite, toujours sans marges ni décalage */
 #intro.fini video.background {
   position: absolute;
   top: 0;
@@ -99,13 +97,11 @@ header#intro {
   transform: none;
 }
 
-/* Titre réduit mais toujours centré horizontalement */
 #intro.fini h1.titre {
   font-size: clamp(1.5rem, 4vw, 2.8rem);
   padding-top: 0.2rem;
 }
 
-/* Sous-titre plus discret */
 #intro.fini p {
   font-size: 1rem;
   opacity: 0.8;
@@ -142,7 +138,6 @@ section:not(footer section) {
 .section_a_propos {
   overflow-x: hidden;
 }
-
 
 .container_a_propos {
   display: flex;
@@ -207,13 +202,6 @@ section:not(footer section) {
 @media (prefers-reduced-motion: reduce) {
   .texte-machine::after { animation: none; }
 }
-
-/* Placeholder*/
-/* .placeholder-texte {
-  visibility: hidden; 
-  pointer-events: none;
-  display: block;
-} */
 
 .partie_a_propos {
   position: relative;
@@ -309,7 +297,6 @@ section:not(footer section) {
   }
 }
 
-
 /* NOUVELLES LANGUES */
 .section-nouvelles-langues {
   padding: 50px;
@@ -393,6 +380,7 @@ section:not(footer section) {
 }
 
 /*https://forum.alsacreations.com/topic-4-49279-1-ExposantenCSS.html*/ 
+
 .exposant {
 position: relative;
 bottom: 1px;
@@ -579,14 +567,13 @@ text-decoration:none;
 
 .separateurs_infos {
   width: 3px;
-  height: 160px; /* hauteur adaptée à celle des blocs */
+  height: 160px;
   background-color: #fde6ac;
   border-radius: 2px;
   opacity: 0.7;
   align-self: center;
 }
 
-/* Responsive : 2 blocs puis 1 sur petits écrans */
 @media (max-width: 1000px) {
   .stats_infos {
     flex-wrap: wrap;
@@ -776,11 +763,10 @@ html, body {
   flex-direction: column;
   gap: 28px;
   margin-top: 50px;
-
-  max-width: 800px;  /* largeur max des rectangles sur grand écran */
-  width: 100%;       /* prend toute la largeur dispo */
+  max-width: 800px;
+  width: 100%;
   margin-left: auto;
-  margin-right: auto; /* centre le bloc */
+  margin-right: auto;
 }
 
 .mentions-leg {
@@ -924,7 +910,7 @@ html, body {
 .btn-mentions:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 18px 3px #c4975989;
-  background: #fff2cf; /* même hover que les "?" */
+  background: #fff2cf;
 }
 
 .btn-mentions:active {

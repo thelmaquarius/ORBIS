@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cartes = Array.from(document.querySelectorAll('.carte-nouvelles-langues'));
   const audios = cartes.map(c => c.querySelector('audio'));
   const boutonsPlay = cartes.map(c => c.querySelector('.bouton-lecture'));
-  
+
   const ICON_PLAY  = '▶︎ Lecture';
   const ICON_PAUSE = '⏸ Pause';
 
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const langueAutre = cartes[i].querySelector('.nom-langue')?.textContent.trim() || 'la langue';
           boutonsPlay[i].textContent = ICON_PLAY;
           boutonsPlay[i].classList.remove('en-lecture');
-          boutonsPlay[i].setAttribute('aria-label', `Lire l’extrait audio de ${langueAutre}`);
+          boutonsPlay[i].setAttribute('aria-label', `Lire l’extrait audio en ${langueAutre}`);
         }
       }
     });
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!btn || !audio) return;
 
     const langue = cartes[index].querySelector('.nom-langue')?.textContent.trim() || 'la langue';
-    btn.setAttribute('aria-label', `Lire l’extrait audio de ${langue}`);
+    btn.setAttribute('aria-label', `Lire l’extrait audio en ${langue}`);
 
     btn.addEventListener('click', () => {
 
@@ -35,27 +35,27 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.play().then(() => {
           btn.textContent = ICON_PAUSE;
           btn.classList.add('en-lecture');
-          btn.setAttribute('aria-label', `Mettre en pause l’extrait audio de ${langue}`);
+          btn.setAttribute('aria-label', `Mettre en pause l’extrait audio en ${langue}`);
         }).catch(console.error);
       } else {
         audio.pause();
         btn.textContent = ICON_PLAY;
         btn.classList.remove('en-lecture');
-        btn.setAttribute('aria-label', `Lire l’extrait audio de ${langue}`);
+        btn.setAttribute('aria-label', `Lire l’extrait audio en ${langue}`);
       }
     });
 
     audio.addEventListener('ended', () => {
       btn.textContent = ICON_PLAY;
       btn.classList.remove('en-lecture');
-      btn.setAttribute('aria-label', `Lire l’extrait audio de ${langue}`);
+      btn.setAttribute('aria-label', `Lire l’extrait audio en ${langue}`);
     });
 
     audio.addEventListener('pause', () => {
       if (!audio.ended) {
         btn.textContent = ICON_PLAY;
         btn.classList.remove('en-lecture');
-        btn.setAttribute('aria-label', `Lire l’extrait audio de ${langue}`);
+        btn.setAttribute('aria-label', `Lire l’extrait audio en ${langue}`);
       }
     });
   });
