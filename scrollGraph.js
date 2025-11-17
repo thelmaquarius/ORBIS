@@ -19,29 +19,28 @@ export async function initScrollGraph() {
 
   const labels = data.map((d) => d.label);
 
-  const colors = [
-    "#FF6384",
-    "#eb8536ff",
-    "#ffcf56c9",
-    "#a3482aff",
-    "#ff5e08ff",
-    "#FF9F40",
-    "#965d24ff",
-    "#dd6a28ff",
-    "#E56B6F",
-    "#FFD166",
-    "#d63d06ff",
-    "#b0702fff",
-    "#b03733ff",
-    "#EF476F",
-    "#da6e2bff",
-    "#FFBE0B",
-    "#f8903bff",
-    "#f2d119ff",
-    "#e84f21ff",
-    "#c15b1fff",
-  ];
-
+const colors = [
+  "#8a5524",
+  "#9e632a",
+  "#b0702f",
+  "#c27d35",
+  "#cf8740",
+  "#d88f48",
+  "#e09853",
+  "#eaa260",
+  "#f2ad6c",
+  "#f7b776",
+  "#f6c088",
+  "#f6ca96",
+  "#f6d4a4",
+  "#f6ddaf",
+  "#f6e6bd",
+  "#a83822",
+  "#c24921",
+  "#d65823",
+  "#e26727",
+  "#f07b2f"
+];
   // --- Initialisation du graphique ---
   const ctx = document.getElementById("myChart").getContext("2d");
   const yearDisplay = document.getElementById("year-display");
